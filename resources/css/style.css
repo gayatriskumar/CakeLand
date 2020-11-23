@@ -1,0 +1,27 @@
+*{
+    position: absolute;
+    top: 437px;
+    left: 604px;
+    height: 105px;
+    width: 969px;
+}
+h1{
+  /*Text styles for "Cakes are " */
+  font-family: 'Raleway';
+  font-size: 76px;
+  font-weight: 500;
+  color: #ffffff;
+  text-align: center;
+  line-height: 42px;
+
+}
+h2{
+    /*Text styles for "Every birt" */
+    font-family: 'Raleway';
+    font-size: 23px !important;
+    font-weight: 300;
+    color: #ffffff;
+    text-align: center;
+    line-height: 42px;
+
+}

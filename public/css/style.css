@@ -1,0 +1,40 @@
+/* body{
+    position: absolute;
+    top: 437px;
+    left: 604px;
+    height: 105px;
+    width: 969px;
+} */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+
+.head{
+  /*Text styles for "Cakes are " */
+  font-family: 'Raleway';
+  font-size: 76px;
+  font-weight: 500;
+  color: red;
+  text-align: center;
+  line-height: 42px;
+
+}
+h2{
+    /*Text styles for "Every birt" */
+    font-family: 'Raleway';
+    font-size: 23px !important;
+    font-weight: 300;
+    color: red;
+    text-align: center;
+    line-height: 42px;
+}
+
+.form-group{
+ 
+  font-family: 'Raleway';
+  font-size: 23px !important;
+  font-weight: 300;
+  color: black;
+  text-align: center;
+  line-height: 42px;
+}
