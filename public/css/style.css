@@ -11,6 +11,11 @@
 
 .head{
   /*Text styles for "Cakes are " */
+  position: absolute;
+  top: 437px;
+  left: 604px;
+  height: 105px;
+  width: 969px;
   font-family: 'Raleway';
   font-size: 76px;
   font-weight: 500;
@@ -29,7 +34,7 @@ h2{
     line-height: 42px;
 }
 
-.form-group{
+.form-group,input,button{
  
   font-family: 'Raleway';
   font-size: 23px !important;
@@ -38,3 +43,4 @@ h2{
   text-align: center;
   line-height: 42px;
 }
+
