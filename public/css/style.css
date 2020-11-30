@@ -4,7 +4,7 @@
   /*Text styles for "Cakes are " */
   position: absolute;
   top: 437px;
-  left: 380px;
+  left: 400px;
   height: 105px;
   width: 969px;
   font-family: 'Raleway';
@@ -19,7 +19,7 @@
     /*Text styles for "Every birt" */
     position: absolute;
     top: 490px;
-    left: 380px;
+    left: 400px;
     height: 105px;
     width: 969px;
     font-family: 'Raleway';
@@ -30,13 +30,34 @@
     line-height: 42px;
 }
 
+.has-search .form-control {
+  padding-left: 2.375rem;
+  text-align:left;
+  padding-left: 70px;
+  position:absolute;
+  top: 550px;
+  left:400px;
+  height: 60px;
+  width: 972px;
+  border-radius: 100px;
+  border: 1px solid #f8f8f8;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  line-height: 2.375rem;
+  color: #aaa;
+  top: 570px;
+  left:420px;
+}
+
 .form-group,input,button{
  
   font-family: 'Raleway';
-  font-size: 23px !important;
+  font-size: 15px !important;
   font-weight: 300;
   color: black;
-  text-align: center;
+  text-align: left;
   line-height: 42px;
 }
 
@@ -55,10 +76,13 @@
   position: relative;
 }
 
-body{
+.body_banner{
     background-image: url("/images/banner.png"); 
 }
-
+.sidebar{
+  position:absolute;
+  left: 0px;
+}
 .wrapper .sidebar{
   width: 200px;
   height: 100%;
@@ -133,43 +157,59 @@ img{
   top: 0px;
   left: 0px;
   height: 285px;
-  width: 260px;
+  width: 200px;
+  background-color: rgba(37, 35, 80, 1);
+  background: transparent;
+  position: fixed;
+  
+}
+.input-container{
+	position:fixed;
+	margin-bottom:25px;
+}
+
+.input-container input{ 
+  background: #363365 !important;
 }
 
 .login_email{
   position: absolute;
-  top: 580px;
+  top: 550px;
   left: 0px;
-  height: 60px;
+  height: 50px;
   width: 200px;
   font-family: 'Raleway';
   font-size: 5px;
   color: #635f9d;
+  padding-left: 30px;
+  border:0;
+  border-bottom:1px solid #635f9d;  
   background-color: #363365 !important;
-  /* line-height: 78px; */
-
 }
 
 .login_password{
   position: absolute;
-  top: 640px;
+  top: 600px;
   left: 0px;
-  height: 60px;
+  height: 50px;
   width: 200px;
   font-family: 'Raleway';
   font-size: 5px;
   color: #635f9d;
-  /* line-height: 78px; */
-  background-color: #363365 !important;
+  padding-left: 30px; 
+  border:0;
+  border-bottom:1px solid #635f9d;
+  background-color: #363365 !important;    
 }
 
-.btn{
-  position: absolute;
-  top: 700px;
+.login_btn{
+  position: fixed;
+  top: 650px;
   left: 0px;
   bottom: 100px;
   height: 60px;
   width: 200px;
+  text-align: center;
   background-color: #bb24ac;
   font-family: 'Raleway';
   font-weight: bold;
@@ -178,28 +218,33 @@ img{
 }
 
 .signup{
-  position: absolute;
-  top: 770px;
-  left: 0px;
-  height: 14px;
-  width: 214px;
+  position: fixed;
+  top: 740px;
+  left: -30px;
+  height: 120px;
+  width: 200px;
   font-family: 'Raleway';
   font-size: 12px;
   color: #9592cc;
   text-align: center;
   line-height: 38px;
+  
 }
 
 .signup_link{
-  position: absolute;
-  top: 20px;
-  left: 0px;
-  height: 10px;
-  width: 214px;
+  position: fixed;
+  top: 740px;
+  left: 65px;
+  height: 120px;
+  width: 200px;
   font-family: 'Raleway';
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 600;
   color: #ffffff;
   text-align: center;
   line-height: 38px;
+  
 }
+
+
+
