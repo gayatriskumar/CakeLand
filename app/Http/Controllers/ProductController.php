@@ -12,10 +12,22 @@ class ProductController extends Controller
         return view('add-product');
     }
 
-    public function displaycategories()
+    public function displaypopularcakes()
     {
         $data=Product::all();
 
-        return view('categories', ['products'=>$data]);
+        return view('popular-cakes', ['products'=>$data]);
+    }
+    public function detail($id)
+    {
+        $data = Product::find($id);
+        return view('detail', ['product'=>$data]);
+
+    }
+
+    public function search(Request $req)
+    {
+        $data= Product::where('name','like','%'.$req->input('query').'%')->get();
+        return view('search',['products'=>$data]);
     }
 }

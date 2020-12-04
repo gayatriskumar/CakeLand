@@ -3,15 +3,39 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserAuth;
 
 Route::get('/', function () {
-    return view('banner');
+    if(session()->has('user'))
+    {
+        return view('layout-loggedin',['user'=>$user]);
+    }
+    else
+    {
+        return view('layout-login');
+    }
 });
-Route::post('/', [UserController::class, 'login']);
 
-Route::view('signup','signup');
+Route::get('/home', function () {
+    if(session()->has('user'))
+    {
+        return view('layout-loggedin',['user'=>$user]);
+    }
+    else
+    {
+        return view('layout-login');
+    }
+});
+
+Route::post('user', [Usercontroller::class, 'login']);
+Route::view('user_home', 'layout-loggedin');
+Route::get('/logout',[UserController::class, 'logout']);
+
+Route::view('signup','layout-signup');
 Route::post('/signup', [UserController::class, 'signup']);
 
 Route::get('/add-product',[ProductController::class, 'addproduct']);
-Route::get('/categories',[ProductController::class, 'displaycategories']);
+Route::get('/popular-cakes',[ProductController::class, 'displaypopularcakes']);
+Route::get('detail/{id}',[ProductController::class, 'detail']);
+Route::get('search',[ProductController::class, 'search']);
 

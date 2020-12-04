@@ -18,7 +18,7 @@ class UserAuth
     {
         if($request->path()=='login' && $request->session()->has('user'))
         {
-            return redirect('banner');
+            return redirect('layout-loggedin');
         }
         return $next($request);
     }

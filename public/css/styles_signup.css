@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,100&display=swap');
+
+  .signup_username{
+    position: absolute;
+    top: 450px;
+    left: 0px;
+    height: 50px;
+    width: 200px;
+    font-family: 'Raleway';
+    font-size: 5px;
+    color: #635f9d;
+    padding-left: 30px;
+    border:0;
+    border-bottom:1px solid #635f9d;  
+    background-color: #363365 !important;
+    z-index: 1;
+  }
+  .signup_usernameIcon{
+    position: absolute;
+    top: 467px;
+    left: 6px;
+    z-index: 2;
+    height: 16px;
+    width: 21px;
+    color: #635f9d;
+  }
+  .signup_email{
+    position: absolute;
+    top: 500px;
+    left: 0px;
+    height: 50px;
+    width: 200px;
+    font-family: 'Raleway';
+    font-size: 5px;
+    color: #635f9d;
+    padding-left: 30px;
+    border:0;
+    border-bottom:1px solid #635f9d;  
+    background-color: #363365 !important;
+    z-index: 1;
+  }
+
+  .signup_emailIcon{
+    position: absolute;
+    top: 517px;
+    left: 8px;
+    z-index: 2;
+    height: 13px;
+    width: 19px;
+    color: #635f9d;
+  }
+  .signup_password{
+    position: absolute;
+    top: 550px;
+    left: 0px;
+    height: 50px;
+    width: 200px;
+    font-family: 'Raleway';
+    font-size: 5px;
+    color: #635f9d;
+    padding-left: 30px; 
+    border:0;
+    border-bottom:1px solid #635f9d;
+    background-color: #363365 !important;   
+    z-index: 1; 
+  }
+
+  .password_logo{
+    position: absolute;
+    top: 568px;
+    left: 6px;
+    z-index: 2;
+    height: 13px;
+    width: 19px;
+    color:#635f9d;
+  }
+
+  .signup_confirm_password{
+    position: absolute;
+    top: 600px;
+    left: 0px;
+    height: 50px;
+    width: 200px;
+    font-family: 'Raleway';
+    font-size: 5px;
+    color: #635f9d;
+    padding-left: 30px;
+    border:0;
+    border-bottom:1px solid #635f9d;  
+    background-color: #363365 !important;
+    z-index: 1;
+  }
+
+  .confirm_password_logo{
+    position: absolute;
+    top: 618px;
+    left: 6px;
+    z-index: 2;
+    height: 13px;
+    width: 19px;
+    color:#635f9d;
+
+  }
+
+  .login{
+    position: fixed;
+    top: 800px;
+    left: -30px;
+    height: 120px;
+    width: 200px;
+    font-family: 'Raleway';
+    font-size: 14px;
+    color: #9592cc;
+    text-align: center;
+    line-height: 38px;
+  }
+
+.login_link{
+  position: fixed;
+  top: 800px;
+  left: 45px;
+  height: 120px;
+  width: 200px;
+  font-family: 'Raleway';
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  text-align: center;
+  line-height: 38px;
+
+  }

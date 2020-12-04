@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;1,300&display=swap');
 .head{
   /*Text styles for "Cakes are " */
   position: absolute;
@@ -42,13 +43,21 @@
   border-radius: 100px;
   border: 1px solid #f8f8f8;
 }
-
+/* 
 .has-search .form-control-feedback {
   position: absolute;
   line-height: 2.375rem;
   color: #aaa;
   top: 570px;
   left:420px;
+} */
+.search_icon{
+  position: absolute;
+  top: 565px;
+  left: 410px;
+  height: 60px;
+  width: 60px;
+  color: rgba(141, 141, 141, 1);
 }
 
 .form-group,input,button{
@@ -61,8 +70,6 @@
   line-height: 42px;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;1,300&display=swap');
 *{
   margin: 0;
   padding: 0;
@@ -90,8 +97,25 @@
   padding: 30px 0px;
   position: fixed;
 }
-.wrapper .sidebar ul li{
+/* .wrapper .sidebar ul li{
   padding: 15px;
+} */
+
+.sidebar_contents{
+  position: absolute;
+  top: 150px;
+  left: 30px;
+  height: 318px;
+  width: 150px;
+  line-height: 40px;
+}
+.sidebar_link{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: #afadd9;
+  letter-spacing: 0.01em;
+  cursor: pointer;
 }    
 
 .categories{
@@ -144,7 +168,7 @@
   background-color: #1f1d55;
 }
     
-img{
+.cakeland_logo{
   position: absolute;
   top: 0px;
   left: 0px;
@@ -163,9 +187,11 @@ img{
   position: fixed;
   
 }
+
 .input-container{
 	position:fixed;
-	margin-bottom:25px;
+  margin-bottom:25px;
+  left: 0px;
 }
 
 .input-container input{ 
@@ -185,8 +211,17 @@ img{
   border:0;
   border-bottom:1px solid #635f9d;  
   background-color: #363365 !important;
+  z-index: 1;
 }
-
+.email_logo{
+  position: absolute;
+  top: 569px;
+  left: 8px;
+  z-index: 2;
+  height: 13px;
+  width: 19px;
+  color: #635f9d;
+}
 .login_password{
   position: absolute;
   top: 600px;
@@ -199,12 +234,23 @@ img{
   padding-left: 30px; 
   border:0;
   border-bottom:1px solid #635f9d;
-  background-color: #363365 !important;    
+  background-color: #363365 !important;   
+  z-index: 1; 
+}
+
+.password_logo{
+  position: absolute;
+  top: 618px;
+  left: 8px;
+  z-index: 2;
+  height: 13px;
+  width: 19px;
+  color:#635f9d;
 }
 
 .login_btn{
   position: fixed;
-  top: 650px;
+  top: 720px;
   left: 0px;
   bottom: 100px;
   height: 60px;
@@ -219,7 +265,7 @@ img{
 
 .signup{
   position: fixed;
-  top: 740px;
+  top: 800px;
   left: -30px;
   height: 120px;
   width: 200px;
@@ -233,7 +279,7 @@ img{
 
 .signup_link{
   position: fixed;
-  top: 740px;
+  top: 800px;
   left: 65px;
   height: 120px;
   width: 200px;
@@ -246,5 +292,9 @@ img{
   
 }
 
-
+.box{
+  position: relative;
+  top: 70px;
+  left: 0px;
+}
 
