@@ -1,5 +1,6 @@
 @extends('layout')
 
+
 @push('styles')
     <link href="{{ asset('css/styles_categories.css') }}" rel="stylesheet">
 @endpush
@@ -8,13 +9,6 @@
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <!-- <script href="{{ asset('js/categories.js') }}"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $(".box_categories").mouseover(function(){
-                $(".box_categories").css("color", "yellow");
-            });
-        });
-    </script>
 @endpush
 
 <body>

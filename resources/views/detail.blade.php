@@ -4,6 +4,10 @@
     <link href="{{ asset('css/styles_detail.css') }}" rel="stylesheet">
 @endpush
 
+@push('scripts')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+@endpush
+
 <body>
     @section('content')
 
@@ -43,10 +47,52 @@
                     <h5 class="price_detail info_data"><span class="title">₹</span>{{$product['price']}}</h5>
                     <h5 class="taxinclusive_msg">(Inclusive of all taxes)</h5>
                 </div>
-
             </div>
-            
-
+            <!-- Order details -->
+            <div class="order_details">
+                    <h3 class="preference_head">Order Preference</h3>
+                    <div class="container-fluid">
+                        <form class="form-inline" action="/cart" method="POST">
+                            @csrf
+                            <input type="hidden" name="product_id" value={{$product['id']}}>
+                            <input type="hidden" name="price" value={{$product['price']}}>
+                            <div class="form-group">
+                                <label for="inlineFormMessage" class="m-2">Weight</label><br>
+                                <select class="form-control" name="weight" id="inlineFormMessage">
+                                <option disabled="disabled" selected="selected">--Select--</option>
+                                <option>1</option>
+                                <option>2</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="inlineFormControlSelect2">Select base layer</label><br>
+                                <select class="form-control" name="baselayer" id="inlineFormControlSelect2">
+                                <option disabled="disabled" selected="selected">--Select--</option>
+                                <option>Red Velvet</option>
+                                <option>German Chocolate</option>
+                                <option>Boston Cream Pie</option>
+                                <option>Black Forest</option>
+                                <option>Butterscotch</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="inlineFormControlSelect3">Quantity</label><br>
+                                <select class="form-control" name="quantity" id="inlineFormControlSelect3">
+                                <option disabled="disabled" selected="selected">--Select--</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="inlineFormControlInput1">Message on Cake</label><br>
+                                <input type="text" name="message" class="form-control message_on_cake" id="inlineFormControlInput1">
+                            </div>
+                            <br><br>
+                            <button type="submit" class="btn btn-primary m-2 place_order_btn">Place Order</button>
+                        </form>
+                    </div>
+                </div>
         </div>
     @endsection
 </body>

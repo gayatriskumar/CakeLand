@@ -1,24 +1,18 @@
 @extends('banner')
 
-@push('styles')
-    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">   
+@push('styles')   
     <link href="{{ asset('css/styles_loggedin.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 @endpush
 
 <body>
     @section('sidebar_links')
-    <div class="sidebar_contents">
-        <ul>
-            <li><a class="sidebar_link home" href="home">Home</a></li>
-            <li><a class="sidebar_link popular_cakes" href="popular-cakes">Popular Cakes</a></li>
-            <li><a class="sidebar_link birthday_cakes" href="categories">Birthday Cakes</a></li>
-            <li><a class="sidebar_link anniversary_cakes" href="categories">Anniversary Cakes</a></li>
-            <li><a class="sidebar_link special_cakes" href="categories">Special Cakes</a></li>
-            <li><a class="sidebar_link profile_user" href="#"></i>Profile</a></li>
-            <li><a class="sidebar_link cart" href="#"></i>Cart</a></li>
-            <li><a class="sidebar_link contact" href="#"></i>Contact</a></li>
-        </ul>    
-    </div>
+
+        <li><a class="sidebar_link profile_user" href="#"></i>Profile</a></li>
+        <li><a class="sidebar_link cart" href="#"></i>Cart</a></li>
+        <li><a class="sidebar_link contact" href="#"></i>Contact</a></li>
+            
+    
     @endsection
 
     @section('user_log')
@@ -46,10 +40,6 @@
             <form action="/search" class="form-group has-search">
                 <span class="fa fa-search form-control-feedback search_icon"></span>
                 <input type="text" name="query" class="form-control" placeholder="Search by name">
-                <!-- <div class="form-control-feedback">
-                    <input type="image" class="search_icon" src="{{ asset('images/search.png')}}">
-                    <img type="submit" class="search_icon" src="{{ asset('images/search.png') }}" alt="">
-                </div> -->
             </form>
         </div>
                 

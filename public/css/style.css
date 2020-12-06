@@ -97,9 +97,6 @@
   padding: 30px 0px;
   position: fixed;
 }
-/* .wrapper .sidebar ul li{
-  padding: 15px;
-} */
 
 .sidebar_contents{
   position: absolute;
@@ -112,11 +109,17 @@
 .sidebar_link{
   font-family: 'Open Sans', sans-serif;
   font-size: 15px;
-  font-weight: 300;
+  font-weight: 600;
   color: #afadd9;
   letter-spacing: 0.01em;
   cursor: pointer;
 }    
+
+.sidebar_link:hover{
+  text-decoration: none;
+  color: white;
+  font-size: 17px;
+}
 
 .categories{
   position: absolute;
@@ -285,11 +288,17 @@
   width: 200px;
   font-family: 'Raleway';
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 600 ;
   color: #ffffff;
   text-align: center;
   line-height: 38px;
   
+}
+
+.signup_link:hover{
+  text-decoration: none;
+  color: white;
+  font-size: 15px;
 }
 
 .box{

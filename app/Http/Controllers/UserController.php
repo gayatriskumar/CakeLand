@@ -19,6 +19,7 @@ class UserController extends Controller
         }
         else
         {
+            $req->session()->put('user',$user);
             return view('layout-loggedin',['user'=>$user]);
         } 
     }

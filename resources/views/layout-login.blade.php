@@ -5,23 +5,6 @@
 @endpush
 
 <body>
-    @section('sidebar_links')
-    <div class="sidebar_contents">
-        <ul>
-                    <!-- <li><a class="categories" href="categories">Categories</a></li>
-                    <li><a class="inbox" href="#">Inbox</a></li>
-                    <li><a class="profile" href="#"></i>Profile</a></li> -->
-
-            <li><a class="sidebar_link home" href="home">Home</a></li>
-            <li><a class="sidebar_link popular_cakes" href="popular-cakes">Popular Cakes</a></li>
-            <li><a class="sidebar_link birthday_cakes" href="#">Birthday Cakes</a></li>
-            <li><a class="sidebar_link anniversary_cakes" href="#">Anniversary Cakes</a></li>
-            <li><a class="sidebar_link special_cakes" href="#">Special Cakes</a></li>
-            <!-- <li><a class="sidebar_link contact" href="#"></i>Contact</a></li> -->
-        </ul>    
-    </div>
-    @endsection
-
     @section('user_log')
     <div class="box">
             <form action='user' method="POST">
@@ -47,4 +30,17 @@
             </div>
         </div>
     @endsection
+
+    @section('content')
+
+        <div class="main_content">
+            <div class="head">Cakes are special.</div>  
+            <div class="head2">Every birthday, every celebration ends with something sweet, a cake, and people remember.</div>
+            <form action="/search" class="form-group has-search">
+                <span class="fa fa-search form-control-feedback search_icon"></span>
+                <input type="text" name="query" class="form-control" placeholder="Search by name">
+            </form>
+        </div>
+        
+@endsection
 </body>

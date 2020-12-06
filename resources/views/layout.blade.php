@@ -32,8 +32,17 @@
                 <img class="cakeland_logo"src="{{ asset('images/logo.png') }}" alt="logo">
             </div>
             
+            <!-- sidebar links for all user level access -->
+
             <div class="container">
-                @yield('sidebar_links')
+                <div class="sidebar_contents">
+                    <li><a class="sidebar_link home" href="home">Home</a></li>
+                    <li><a class="sidebar_link popular_cakes" href="popular-cakes">Popular Cakes</a></li>
+                    <li><a class="sidebar_link birthday_cakes" href="categories">Birthday Cakes</a></li>
+                    <li><a class="sidebar_link anniversary_cakes" href="categories">Anniversary Cakes</a></li>
+                    <li><a class="sidebar_link special_cakes" href="categories">Special Cakes</a></li>
+                    @yield('sidebar_links')
+                </div>
             </div>
 
         </div>

@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,100&display=swap');
 
 .box_detail{
-    position: absolute;
-    top: 0px;
-    left: 0px;
+    position: fixed;
+    top: -30px;
+    left: -40px;
     height: 1080px;
     width: 1920px;
 }
@@ -133,4 +133,45 @@
     font-size: 13px;
     color: rgba(74, 74, 74, 1);
     line-height: 36px;
+}
+.order_details{
+    position: absolute;
+    top: 630px;
+    left:360px;
+    height: 100px;
+    width: 1300px;
+    line-height: 20px;
+}
+.preference_head{
+    color: black;
+    border-bottom:1px solid rgb(211, 209, 218); 
+    width: 100%;
+    padding-bottom: 10px;
+    font-family: 'Raleway';
+    font-weight: 800;
+}
+
+.order_details .form-group{
+    padding-right: 100px;
+}
+.order_details .form-group label{
+    color:rgb(97, 97, 97) ;
+}
+
+.order_details .form-group .form-control{
+    width: 200px;
+}
+.order_details .form-group input{
+    width: 250px !important;
+}
+
+.order_details .place_order_btn{
+    background-color: rgba(26, 24, 63, 1) !important;
+}
+
+@media (max-width: 830px) {
+    .form-inline {
+      flex-direction: column;
+      align-items: stretch;
+    }
 }

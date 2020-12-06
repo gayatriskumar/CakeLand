@@ -8,6 +8,16 @@
     width: 200px;
     background-color: rgba(37, 35, 80, 1);
 }
+.sidebar_link_loggedin{
+    
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #afadd9;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+}
+
 
 .dp{
     position: absolute;
