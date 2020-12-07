@@ -52,13 +52,13 @@
             <div class="order_details">
                     <h3 class="preference_head">Order Preference</h3>
                     <div class="container-fluid">
-                        <form class="form-inline" action="/cart" method="POST">
+                        <form class="form-inline" action="cart" method="POST">
                             @csrf
                             <input type="hidden" name="product_id" value={{$product['id']}}>
                             <input type="hidden" name="price" value={{$product['price']}}>
                             <div class="form-group">
                                 <label for="inlineFormMessage" class="m-2">Weight</label><br>
-                                <select class="form-control" name="weight" id="inlineFormMessage">
+                                <select class="form-control" name="weight" id="inlineFormMessage" required>
                                 <option disabled="disabled" selected="selected">--Select--</option>
                                 <option>1</option>
                                 <option>2</option>
@@ -66,7 +66,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="inlineFormControlSelect2">Select base layer</label><br>
-                                <select class="form-control" name="baselayer" id="inlineFormControlSelect2">
+                                <select class="form-control" name="baselayer" id="inlineFormControlSelect2" required>
                                 <option disabled="disabled" selected="selected">--Select--</option>
                                 <option>Red Velvet</option>
                                 <option>German Chocolate</option>
@@ -77,7 +77,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="inlineFormControlSelect3">Quantity</label><br>
-                                <select class="form-control" name="quantity" id="inlineFormControlSelect3">
+                                <select class="form-control" name="quantity" id="inlineFormControlSelect3" required>
                                 <option disabled="disabled" selected="selected">--Select--</option>
                                 <option>1</option>
                                 <option>2</option>
@@ -86,7 +86,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="inlineFormControlInput1">Message on Cake</label><br>
-                                <input type="text" name="message" class="form-control message_on_cake" id="inlineFormControlInput1">
+                                <input type="text" name="message" class="form-control message_on_cake" id="inlineFormControlInput1" required>
                             </div>
                             <br><br>
                             <button type="submit" class="btn btn-primary m-2 place_order_btn">Place Order</button>

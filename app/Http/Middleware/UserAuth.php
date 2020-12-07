@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Session;
 
 class UserAuth
 {
@@ -18,7 +20,9 @@ class UserAuth
     {
         if($request->path()=='login' && $request->session()->has('user'))
         {
-            return redirect('layout-loggedin');
+            $user = new User;
+            $user=$request->session()->get('user');
+            return view('layout-loggedin',['user'=>$user]);
         }
         return $next($request);
     }

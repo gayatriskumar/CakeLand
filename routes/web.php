@@ -5,17 +5,21 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserAuth;
 
-Route::get('/', function () {
-        return view('layout-login');
-});
 
+// Route::get('/', [UserController::class, 'userAccess']);
+// Route::get('/home', [UserController::class, 'userAccess']);
+
+
+Route::get('/', function () {
+        return view('banner');
+});
 Route::get('/home', function () {
-        return view('layout-login');
+        return view('banner');
 });
 
 
 Route::post('user', [Usercontroller::class, 'login']);
-Route::view('user_home', 'layout-loggedin');
+Route::view('user_home', 'layout');
 Route::get('/logout',[UserController::class, 'logout']);
 
 Route::view('signup','layout-signup');
@@ -23,8 +27,12 @@ Route::post('/signup', [UserController::class, 'signup']);
 
 Route::get('/add-product',[ProductController::class, 'addproduct']);
 Route::get('/popular-cakes',[ProductController::class, 'displaypopularcakes']);
-Route::get('detail/{id}',[ProductController::class, 'detail']);
+Route::get('/birthday-cakes',[ProductController::class, 'displaybirthdaycakes']);
+Route::get('/anniversary-cakes',[ProductController::class, 'displayanniversarycakes']);
+Route::get('/special-cakes',[ProductController::class, 'displayspecialcakes']);
+Route::get('/detail/{id}',[ProductController::class, 'detail']);
 Route::get('search',[ProductController::class, 'search']);
 
-Route::post('cart',[ProductController::class, 'addToCart']);
+Route::post('detail/cart',[ProductController::class, 'addToCart']);
+Route::get('cart',[ProductController::class, 'viewCart']);
 

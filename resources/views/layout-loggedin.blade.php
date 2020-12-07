@@ -1,3 +1,9 @@
+<?php
+use App\Http\Controllers\ProductController;
+$total= ProductController::cartItem();
+?>
+
+
 @extends('banner')
 
 @push('styles')   
@@ -9,7 +15,7 @@
     @section('sidebar_links')
 
         <li><a class="sidebar_link profile_user" href="#"></i>Profile</a></li>
-        <li><a class="sidebar_link cart" href="#"></i>Cart</a></li>
+        <li><a class="sidebar_link cart" href="cart"></i>Cart <div class="no_of_items"> {{$total}} </div></a></li>
         <li><a class="sidebar_link contact" href="#"></i>Contact</a></li>
             
     
@@ -25,7 +31,6 @@
         <div class="logout_btn">
             <a href="logout">
             <img class="logout_img" src="{{ asset('images/loggedin/logout.png') }}"><span class="logout_txt">Log Out</span> 
-            
             </a>
         </div>
     </div>

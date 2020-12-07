@@ -1,30 +1,28 @@
-<?php
-use App\Http\Controllers\ProductController;
-$total= ProductController::cartItem();
-?>
-
 @extends('layout')
 
 @push('styles')
     <link href="{{ asset('css/styles_categories.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/styles_cart.css') }}" rel="stylesheet">
 @endpush
 
 @push('scripts')
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <!-- <script href="{{ asset('js/categories.js') }}"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 @endpush
 
 <body>
+
     @section('content')
     <div class="categories_wrapper">
         <!-- heading -->
-        <h1 class="head_categories">Cart</h1>
-        <h2 class="head_itemdetails">Item Details</h2>
-        <span class="head_noofitems">{{$total}} Items</span>
+        <h1 class="head_categories">Anniversary cakes</h1>
+        <div class="form-group has-search categories_search">
+            <span class="fa fa-search form-control-feedback categories_searchicon"></span>
+            <input type="text" class="form-control" placeholder="Search by name">
+        </div>
 
         <!-- cake box -->
-        <div class="cart_list">
+        <div class="categories_list">
             @foreach($products as $items)
                 <div class="box_categories">
                     <a class="atag" href="detail/{{$items->id}}">
@@ -33,7 +31,7 @@ $total= ProductController::cartItem();
                         </div>
 
                         <div class="ordernow_btn">
-                            <button class="ordernow_txt">Remove Item</button>
+                            <button class="ordernow_txt">Order Now</button>
                         </div>
                         <div class="box_categories_details">
                             <div class="name_categories txt_forhover">{{$items->name}}</div>
@@ -52,14 +50,15 @@ $total= ProductController::cartItem();
                                     </div>
                                 @endfor
                             </div>
-                            <h5 class="description_cart txt_forhover">
-                                <div class="brand_categories txt_forhover">Brand: {{$items->brand}}</div>
-                                <div class="product_code_categories txt_forhover">Product Code: {{$items->name}}</div>
-                                <div class="rewardpoints_categories txt_forhover">Reward Point: {{$items->reward_point}}</div>
-                            </h5>
-
-                            <div class="cart_youpay">You Pay: </div>
-                            <h5 class="cart_price txt_forhover"><span class="rupee txt_forhover">₹</span>{{$items->price}}</h5>
+                            <div class="box_categories_availability">
+                                @if ($items->qty_available >= 1)
+                                    Availability: <span class="available">In Stock</span>
+                                @else
+                                    Availability: <span class="not_available">Out of Stock</span>
+                                @endif
+                            </div>
+                            <h5 class="description_categories txt_forhover">{{$items->description}}</h5>
+                            <h5 class="description_price txt_forhover"><span class="rupee txt_forhover">₹</span>{{$items->price}}</h5>
                         </div>
                     </a>
                 </div>
@@ -71,4 +70,3 @@ $total= ProductController::cartItem();
 
     @endsection
 </body>
-

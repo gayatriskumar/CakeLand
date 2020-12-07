@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use \Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Http\Middleware\UserAuth;
+
+
 
 class UserController extends Controller
 {
@@ -24,12 +27,36 @@ class UserController extends Controller
         } 
     }
 
-    function logout(){
-        if(session()->has('user')){
+    function logout()
+    {
+        if(session()->has('user'))
+        {
             session()->pull('user');
         }
-        return redirect('home');
+        return redirect('/');
     }
+
+    function userAccess(Request $req)
+    {
+        if(session()->has('user'))
+        {
+            $user=$req->session()->get('user');
+            return view ('banner',['user'=>$user]);
+        }
+        else
+        {
+            return view('banner');
+        }
+    }
+
+    // function getUser(Request $req)
+    // {
+    //     if(session()->has('user'))
+    //     {
+    //         $user=$req->session()->get('user');
+    //         return view('layout-loggedin',['user'=>$user]);
+    //     }
+    // }
     
     function signup(Request $req)
     {
