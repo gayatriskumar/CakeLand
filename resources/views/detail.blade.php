@@ -39,9 +39,9 @@
                     <h5 class="rewardpoints_detail info_data"><span class="title">Reward Point: </span>{{$product['reward_point']}}</h5>
                     <div class="availability_detail info_data">
                         @if ($product['qty_available'] >= 1)
-                        <span class="title">Availability:</span> <span class="available">In Stock</span>
+                        <span class="title">Availability:</span> <span class="available"> In Stock</span>
                         @else
-                        <span class="title">Availability:</span><span class="not_available">Out of Stock</span>
+                        <span class="title">Availability:</span><span class="not_available"> Out of Stock</span>
                         @endif
                     </div>
                     <h5 class="price_detail info_data"><span class="title">₹</span>{{$product['price']}}</h5>
@@ -89,7 +89,12 @@
                                 <input type="text" name="message" class="form-control message_on_cake" id="inlineFormControlInput1" required>
                             </div>
                             <br><br>
+                            @if ($product['qty_available'] >= 1)
                             <button type="submit" class="btn btn-primary m-2 place_order_btn">Place Order</button>
+                            @else
+                            <span class="title">Sorry !</span><span class="not_available"> Out of Stock</span>
+                            @endif
+                            
                         </form>
                     </div>
                 </div>

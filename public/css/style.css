@@ -1,6 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;1,300&display=swap');
+@font-face{
+  font-family: 'TypoGroteskRounded';
+  src: url('/fonts/Typo Grotesk Rounded Demo.otf');
+}
+@font-face{
+  font-family: 'Gautami';
+  src: url('/fonts/gautami.ttf');
+}
+
 .head{
   /*Text styles for "Cakes are " */
   position: absolute;
@@ -197,13 +206,14 @@
 
 .login_box{
   position: absolute;
-  top: 0px;
+  top: 3px;
   left: 0px;
   height: 285px;
   width: 200px;
   background-color: rgba(37, 35, 80, 1);
   background: transparent;
   position: fixed;
+  border: transparent;
   
 }
 
