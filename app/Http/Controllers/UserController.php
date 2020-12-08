@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use \Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Http\Middleware\UserAuth;
+use Illuminate\Support\Facades\Validator;
 
 
 
@@ -33,7 +34,7 @@ class UserController extends Controller
         {
             session()->pull('user');
         }
-        return redirect('/');
+        return view('banner');
     }
 
     function userAccess(Request $req)
@@ -48,18 +49,42 @@ class UserController extends Controller
             return view('banner');
         }
     }
-
-    // function getUser(Request $req)
-    // {
-    //     if(session()->has('user'))
-    //     {
-    //         $user=$req->session()->get('user');
-    //         return view('layout-loggedin',['user'=>$user]);
-    //     }
-    // }
     
     function signup(Request $req)
     {
+        // $this->validate(
+        //     $req,
+        //     [
+        //         'name'                 => 'required',
+        //         'email'                => "required|email|unique:users,email",
+        //         // 'current_password'     => 'required|checkcurrentpass',
+        //         // 'new_password'         => 'required',
+        //         // 'confirm_new_password' => 'required|same:new_password',
+        //     ]
+        // );
+        // $validatedData = $req->validate(
+        //     [ 
+        //         'name'                 => 'required',
+        //         'email'                => "required|email|unique:users,email",
+        //     ]
+            
+        // );
+        // 
+        // if ($validator->fails()) 
+        // { 
+        //     return redirect('signup') ->withErrors($validator) ->withInput(); 
+        // }
+
+        
+        $req->validate([
+            'name'                 => 'required',
+            'email'                => "required|email|unique:users,email",
+        ]);
+
+        if ($validator->fails()) {
+            return self::index($req)->withErrors($validator->errors());
+        }
+
         $user = new User;
         
         $user->name=$req->name;
@@ -72,12 +97,13 @@ class UserController extends Controller
         //     'name' => 'required|min:3|max:50',
         //     'email' => 'email', 'vat_number' => 'max:13', 
         //     'password' => 'required|confirmed|min:6',
-        //     'phoneno' => 'required|min:10|max:10', 
+        //     'phoneno' => 'required|min:10|max:10',    
         // ]);
+
         $user->save();
 
         $usertype=$user->user_type;
-        return view('layout-login');
+        return view('banner');
 
     }
 }

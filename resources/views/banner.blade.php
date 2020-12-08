@@ -9,13 +9,13 @@
     @section('content')
 
     <div class="main_content">
-        <div class="head">Cakes are special.</div>  
-        <div class="head2">Every birthday, every celebration ends with something sweet, a cake, and people remember.</div>
-        <div class="form-group has-search">
-            <span class="fa fa-search form-control-feedback search_icon"></span>
-            <input type="text" class="form-control" placeholder="Search by name">
+            <div class="head">Cakes are special.</div>  
+            <div class="head2">Every birthday, every celebration ends with something sweet, a cake, and people remember.</div>
+            <form action="/search" class="form-group has-search">
+                <span class="fa fa-search form-control-feedback search_icon"></span>
+                <input type="text" name="query" class="form-control" placeholder="Search by name">
+            </form>
         </div>
-    </div>
                 
     @endsection
 </body>

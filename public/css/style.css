@@ -52,7 +52,7 @@
   left:420px;
 } */
 .search_icon{
-  position: absolute;
+  position: fixed;
   top: 565px;
   left: 410px;
   height: 60px;

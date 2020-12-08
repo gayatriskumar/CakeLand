@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,100&display=swap');
-
+.body_banner{
+  background-image: url("/images/banner.png"); 
+}
+.box{
+  position: fixed;
+  top: 100px;
+  left: 0px;
+}
   .signup_username{
     position: absolute;
     top: 450px;
@@ -104,7 +111,7 @@
 
   .login{
     position: fixed;
-    top: 800px;
+    top: 810px;
     left: -30px;
     height: 120px;
     width: 200px;
@@ -117,7 +124,7 @@
 
 .login_link{
   position: fixed;
-  top: 800px;
+  top: 810px;
   left: 45px;
   height: 120px;
   width: 200px;
@@ -128,4 +135,12 @@
   text-align: center;
   line-height: 38px;
 
+  }
+  .search_icon{
+    position: fixed;
+    top: 575px;
+    left: 410px;
+    height: 60px;
+    width: 60px;
+    color: rgba(141, 141, 141, 1);
   }

@@ -117,10 +117,6 @@ $total=ProductController::cartItem();
             } 
             ?>
         </div>    
-
-            <!-- @yield('user_log') -->
-        
-
     </div>
 
     <div class="container">
