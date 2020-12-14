@@ -52,6 +52,18 @@ class UserController extends Controller
     
     function signup(Request $req)
     {
+        $validator = Validator::make($req->all(), 
+        [
+            'name'                      => 'required',
+            'email'                     => "required|email|unique:users,email",
+            'password'                  => 'required|min:5|max:10',
+            'password_confirmation'     => 'required|same:password',
+        ]);
+        
+        if ($validator->fails()) 
+        {
+             return redirect('signup') ->withErrors($validator) ->withInput(); 
+        }
         // $this->validate(
         //     $req,
         //     [
@@ -62,6 +74,7 @@ class UserController extends Controller
         //         // 'confirm_new_password' => 'required|same:new_password',
         //     ]
         // );
+
         // $validatedData = $req->validate(
         //     [ 
         //         'name'                 => 'required',
@@ -69,21 +82,31 @@ class UserController extends Controller
         //     ]
             
         // );
-        // 
+        
         // if ($validator->fails()) 
         // { 
         //     return redirect('signup') ->withErrors($validator) ->withInput(); 
         // }
 
-        
-        $req->validate([
-            'name'                 => 'required',
-            'email'                => "required|email|unique:users,email",
-        ]);
+        // $validator =Validator::make($req->all(), 
+        // [ 
+        //     'name'                 => 'required',
+        //     'email'                => "required|email|unique:users,email",
+        // ]);
 
-        if ($validator->fails()) {
-            return self::index($req)->withErrors($validator->errors());
-        }
+        // if ($validator->fails()) 
+        // {
+        //     return redirect('signup') ->withErrors($validator) ->withInput(); 
+        // }
+
+        // $req->validate([
+        //     'name'                 => 'required',
+        //     'email'                => "required|email|unique:users,email",
+        // ]);
+
+        // if ($validator->fails()) {
+        //     return self::index($req)->withErrors($validator->errors());
+        // }
 
         $user = new User;
         
