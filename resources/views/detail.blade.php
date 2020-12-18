@@ -1,10 +1,13 @@
 @extends('layout')
 
 @push('styles')
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles_detail.css') }}" rel="stylesheet">
 @endpush
 
 @push('scripts')
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <!-- <script href="{{ asset('js/categories.js') }}"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 @endpush
 
@@ -90,7 +93,7 @@
                             </div>
                             <br><br>
                             @if ($product['qty_available'] >= 1)
-                            <button type="submit" class="btn btn-primary m-2 place_order_btn">Place Order</button>
+                            <button type="submit" class="place_order_btn">Place Order</button>
                             @else
                             <span class="title">Sorry !</span><span class="not_available"> Out of Stock</span>
                             @endif

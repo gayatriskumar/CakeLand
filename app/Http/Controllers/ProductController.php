@@ -83,8 +83,8 @@ class ProductController extends Controller
         if($req->session()->has('user'))
         {   
             
-            $user_id=Session::get('user')['id'];
-            $cartId=DB::table('cart')
+            $user_id =  Session::get('user')['id'];
+            $cartId  =  DB::table('cart')
                         ->where('cart_status','=','0')
                         ->where('user_id',$user_id)
                         ->pluck('id')->first();
@@ -94,7 +94,7 @@ class ProductController extends Controller
             if(isset($cartId))
             {
 
-                    $cartdetail= new CartDetail;
+                    $cartdetail = new CartDetail;
     
                     $cartdetail->order_id = $cartId;
                     $cartdetail->product_id = $req->product_id; 
@@ -102,15 +102,38 @@ class ProductController extends Controller
                     $cartdetail->weight = $req->weight;
                     $cartdetail->message = $req->message;
                     $cartdetail->baselayer = $req->baselayer;
-                    $cartdetail->save();    
-    
+                    $cartdetail->save(); 
                     
+                    $tot_cost  =  DB::table('cart')
+                                    ->where('cart_status','=','0')
+                                    ->where('user_id',$user_id)
+                                    ->pluck('total_cost')->first();
+                    
+                    $qty       =  DB::table('cart')
+                                    ->join('cartdetails','cart.id','=','cartdetails.order_id')
+                                    ->join('products','cartdetails.product_id','=','products.id')
+                                    ->where('user_id',$user_id)
+                                    ->where('cart.user_id',$user_id)
+                                    ->where('cartdetails.product_id',$req->product_id)
+                                    ->pluck('cartdetails.quantity')
+                                    ->first();
+                                               
+                    
+                                    // echo "<pre>";
+                                    // print_r($qty);
+                                    // die();
+
+                    Cart::where('cart_status','=','0')
+                        ->where('user_id',$user_id)
+                        ->update(['total_cost' => ($qty * $req->price) + $tot_cost]);
+
+                    // $tot_cost = $tot_cost + $items->price;   
                     // $cart->delivery_cost = 0;
                     // $cart->cart_status = 1;
                     // $cart->total_cost=$req->price + $cart->total_cost;
                     // $orderDate=$cart->created_at;
                     // $cart->delivery_address=session()->get('user')['address'];
-                    // $cart->update();
+                    // $cart->save();
 
             }
             else
@@ -129,7 +152,9 @@ class ProductController extends Controller
                     $cartdetail->weight = 5;
                     $cartdetail->message = $req->message;
                     $cartdetail->baselayer = $req->baselayer;
-                    $cartdetail->save();    
+                    $cartdetail->save();   
+
+                    $cart->total_cost = $req->quantity * $req->price;
     
                     
                     // $cart->delivery_cost=0;
@@ -137,7 +162,7 @@ class ProductController extends Controller
                     // $cart->total_cost=$req->price + $cart->delivery_cost;
                     // $orderDate=$cart->created_at;
                     // $cart->delivery_address=session()->get('user')['address'];
-                    // $cart->save();
+                    $cart->save();
             }
             return redirect ('/cart');
 
@@ -148,6 +173,8 @@ class ProductController extends Controller
             return redirect ('/home');
         }
     }
+
+
     // Function to get no of items in a cart
     static function cartItem()
     {
@@ -171,13 +198,81 @@ class ProductController extends Controller
     public function viewCart()
     {   
         $user_id=Session::get('user')['id'];
+
         $products=DB::table('cart')
-        ->join('cartdetails','cart.id','=','cartdetails.order_id')
-        ->join('products','cartdetails.product_id','=','products.id')
-        ->where('cart.user_id',$user_id)
-        ->select('products.*')
-        ->get();
-        
+                    ->join('cartdetails','cart.id','=','cartdetails.order_id')
+                    ->join('products','cartdetails.product_id','=','products.id')
+                    ->where('cart.user_id',$user_id)
+                    ->select('products.*','cartdetails.id as cart_id','cart.total_cost as total_cost')
+                    ->get()
+                    ->toArray();
+        // echo "<pre>";
+        // print_r($products);
+
         return view('cart',['products'=>$products]);
+    }
+
+    public function removeCart($id)
+    {
+        $no_of_items     = ProductController::cartItem();
+        $user_id         = Session::get('user')['id'];
+
+        $cost_of_removed = DB::table('cartdetails')
+                                ->join('products','cartdetails.product_id','=','products.id')
+                                ->where('products.id',$id)
+                                ->pluck('price')->first(); 
+
+        $tot_cost        =  DB::table('cart')
+                                ->where('cart_status','=','0')
+                                ->where('user_id',$user_id)
+                                ->pluck('total_cost')->first();
+
+        $qty             =  DB::table('cart')
+                                ->join('cartdetails','cart.id','=','cartdetails.order_id')
+                                ->join('products','cartdetails.product_id','=','products.id')
+                                ->where('user_id',$user_id)
+                                ->where('cart.user_id',$user_id)
+                                ->where('cartdetails.product_id',$id)
+                                ->pluck('cartdetails.quantity')
+                                ->first();
+
+        // echo "<pre>";
+        // print_r($cost_of_removed);
+        // die();
+
+        Cart::where('cart_status','=','0')
+                ->where('user_id',$user_id)
+                ->update(['total_cost' => $tot_cost - ($qty * $cost_of_removed)]);
+       
+        $cartdetailId   = DB::table('cart')
+                            ->join('cartdetails','cart.id','=','cartdetails.order_id')
+                            ->join('products','cartdetails.product_id','=','products.id')
+                            ->where('cart.user_id',$user_id)
+                            ->where('cartdetails.product_id',$id)
+                            ->pluck('cartdetails.id')
+                            ->first();
+
+        if($no_of_items == 1)
+        {       
+            Cartdetail::destroy($cartdetailId);
+
+            $cartId         =  DB::table('cart')
+                            ->where('cart_status','=','0')
+                            ->where('user_id',$user_id)
+                            ->pluck('id')->first();
+
+            Cart::destroy($cartId);
+        }
+        else
+        {
+            Cartdetail::destroy($cartdetailId);
+        }
+        
+        return redirect('cart');
+    }
+
+    public function checkout(Request $req)
+    {
+        return view('delivery-location');
     }
 }

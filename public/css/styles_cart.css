@@ -1,39 +1,64 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+.emptycart{
+    position: absolute;
+    top: 300px;
+    left: 400px;
+    height: 100px;
+    width: 300px;
+    font-family: 'Raleway';
+    font-size: 30px;
+    font-weight: 700;
+    color: rgba(3, 3, 3, 1);
+    letter-spacing: 0.01em;
+    border-bottom:solid 1px rgb(211, 209, 218);
+
+}
+.upperhead{
+    position: absolute;
+    top: 40px;
+    left: 12px;
+    height: 100px;
+    width: 1300px;
+    border-bottom:solid 1px rgb(211, 209, 218);
+
+}
 .head_itemdetails{
     position: absolute;
-    top: 50px;
-    left: 35px;
-    height: 70px;
-    width: 1300px;
+    top: 40px;
+    left: 0px;
+    height: 40px;
+    width: 170px;
     font-family: 'Raleway';
     font-size: 25px;
     font-weight: 700;
     color: rgba(3, 3, 3, 1);
     letter-spacing: 0.01em;
-    line-height: 78px;
-    border-bottom:1px solid rgb(211, 209, 218);
+    /* line-height: 78px; */
+    
     
 }
 .head_noofitems{
     position: absolute;
-    top: 70px;
+    top: 55px;
     left: 1200px;
-    height: 70px;
+    height: 40px;
     width: 100px;
     font-family: 'Raleway';
     font-size: 25px;
     font-weight: 700;
     color: rgba(3, 3, 3, 1);
     letter-spacing: 0.01em;
-    line-height: 78px;
+
 }
 .cart_list{
-    position: absolute;
+    position: fixed;
     top: 130px;
-    left: 0px;
+    left: 250px;
     margin: 20px;
     width: 1300px;
-    height: 650px;
+    height: 415px;
     overflow-x: scroll;
     overflow-y: hidden;
     display: flex;
@@ -72,6 +97,41 @@
     letter-spacing: 0.01em;
     line-height: 37px;
 }
+.ordernow_btn{
+    position: absolute;
+    top: 60px;
+    left: 90px;
+    height: 45px;
+    width: 147px;
+    background-color:transparent;
+    border: 1px solid white;
+    border-radius: 10px;
+    display: none;
+}
+.removeitem_txt{
+    position: absolute;
+    top: 5px;
+    left: 0px;
+    height: 40px;
+    width: 140px;
+    font-family: 'Raleway';
+    font-size: 20px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 1);
+    background-color: transparent;
+    letter-spacing: 0.01em;
+    text-align: center;
+    border: transparent;
+    display: none;
+    text-decoration: none;
+    
+}
+.box_categories:hover .ordernow_btn, .removeitem_txt{
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    
+}
 .cart_price{
     position: relative;
     top: 145px;
@@ -82,4 +142,111 @@
     font-size: 33px;
     color: rgba(0, 0, 0, 1);
     line-height: 36px;
+}
+.shipmsg{
+    position: fixed;
+    top: 570px;
+    left: 280px;
+    height: 21px;
+    width: 499px;
+    font-family: 'Raleway';
+    font-size: 18px;
+    font-weight: 500;
+    color: rgba(134, 134, 134, 1);
+    letter-spacing: 0.01em;
+    line-height: 78px;
+}
+.charges_box{
+    position: absolute;
+    top: 580px;
+    left: 0px;
+    height:200px;
+    width:1300px;
+    border-top:solid 1px rgb(211, 209, 218);
+}
+
+.charges{
+    position: absolute;
+    top: 0px;
+    left: 840px;
+    height: 100px;
+    width: 450px;
+    font-family: 'Raleway';
+    font-size: 18px;
+    font-weight: 500;
+    color: rgba(94, 94, 94, 1);
+    letter-spacing: 0.01em;
+    line-height: 41px;
+    border-bottom:solid 1px rgb(211, 209, 218);
+}
+.costinfig{
+    position: absolute;
+    top: 0px;
+    left: 360px;
+    font-family: 'Lato';
+    font-weight: 200;
+    
+}
+.deliverycharge{
+    position: absolute;
+    top: 40px;
+    left: 360px;
+    font-weight: 600;
+    color: rgba(41, 189, 48, 1);
+    letter-spacing: 0.01em;
+    line-height: 41px;
+    
+}
+.finalcharge{
+    position: absolute;
+    top: 100px;
+    left: 1000px;
+    height: 50px;
+    width: 300px;
+    /*Text styles for "You Pay: " */
+    font-family: 'Raleway';
+    font-size: 21px;
+    font-weight: 800;
+    color: rgba(26, 24, 63, 1);
+    letter-spacing: 0.01em;
+    line-height: 41px;
+    /* border: solid orange; */
+    display: inline-block;
+}
+.totalcharge{
+    position: absolute;
+    top: 0px;
+    left: 35px;
+    height: 50px;
+    width: 90px;
+    font-family: 'Lato';
+    font-size: 21px;
+    color: rgba(26, 24, 63, 1);
+    letter-spacing: 0.01em;
+    line-height: 41px;
+    /* border: solid brown; */
+    
+}
+.charge{
+    position: absolute;
+    top: 0px;
+    left: 180px;
+    height: 50px;
+    width: 40px;
+    display: inline-block;
+    /* border: solid cadetblue; */
+}
+.ckeckout_btn{
+    position: absolute;
+    top: 160px;
+    left: 940px;
+    height: 46px;
+    width: 356px;
+    color:  rgba(227, 227, 227, 1);
+    text-align: center;
+    font-weight: 600;
+    font-size: 20px !important;
+    background-color: rgba(26, 24, 63, 1);
+    border: 1px solid rgba(227, 227, 227, 1);
+    border-radius: 10px;
 }

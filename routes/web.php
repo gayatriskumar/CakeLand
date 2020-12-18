@@ -33,6 +33,15 @@ Route::get('/special-cakes',[ProductController::class, 'displayspecialcakes']);
 Route::get('/detail/{id}',[ProductController::class, 'detail']);
 Route::get('search',[ProductController::class, 'search']);
 
+Route::get('/profile',[UserController::class, 'profileUser']);
+Route::get('mycakes',[UserController::class, 'showmycakes']);
+
+Route::get('/contact',[UserController::class, 'contactUs']);
+
+
 Route::post('detail/cart',[ProductController::class, 'addToCart']);
 Route::get('cart',[ProductController::class, 'viewCart']);
+Route::get('removecart/{id}',[ProductController::class, 'removeCart']);
+Route::get('checkout',[ProductController::class, 'checkout']);
+
 

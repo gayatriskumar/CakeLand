@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+.upper_wrapper{
+    position: absolute;
+    top: 90px;
+    left: 275px;
+    height: 250px;
+    width: 1300px;
+    /* border: solid red; */
+}
+.img_box{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 250px;
+    width: 319px;
+    background-color: rgba(243, 243, 243, 1);
+}
+.dp_profile{
+    position: absolute;
+    top: 30px;
+    left: 80px;
+    height: 156px;
+    width: 156px;
+    /* border: solid green; */
+}
+.user_dp{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 142px;
+    width: 142px;
+    background-color: rgba(243, 28, 94, 1);
+    border: 5px solid rgba(224, 224, 224, 1);
+    border-radius: 142px;
+}
+.user_name{
+    position: absolute;
+    top: 180px;
+    left: 50px;
+    height: 33px;
+    width: 213px;
+    font-family: 'Raleway';
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+    color: rgba(55, 55, 55, 1);
+    /* border:solid blue; */
+}
+.email_box{
+    position: absolute;
+    top: 10px;
+    left: 350px;
+    height: 80px;
+    width: 257px;
+}
+
+.location_box{
+    position: absolute;
+    top: 100px;
+    left: 350px;
+    height: 113px;
+    width: 310px;  
+}
+
+.phoneno_box{
+    position: absolute;
+    top: 10px;
+    left: 660px;
+    height: 80px;
+    width: 190px;
+    
+}
+.icon_profile{
+    position: absolute;
+    top: 15px;
+    left: 0px;
+    height: 18px;
+    width: 22px;
+    font-size:18px; 
+}
+.box_head{
+    position: absolute;
+    top: 0px;
+    left: 30px;
+    height: 15px;
+    width: 100px;
+    font-family: 'Raleway';
+    font-size: 18px;
+    font-weight: 500;
+    color: rgba(152, 152, 152, 1);
+    line-height: 45px;
+}
+.user_data{
+    position: absolute;
+    top: 40px;
+    left: 30px;
+    height: 75px;
+    width: 300px;
+    font-family: 'Raleway';
+    font-size: 16px;
+    font-weight: 800;
+    color: rgba(79, 79, 79, 1);
+    line-height: 28px;
+}
+.user_phoneno{
+    font-family: 'Lato';
+    font-weight: 600;
+}
+
+.edit_button{
+    position: absolute;
+    top: 0px;
+    left: 1250px;
+    height: 49px;
+    width: 49px;
+    background-color: rgba(130, 128, 173, 1);
+    border-radius: 49px;
+}
+.edit_icon{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 20px;
+}
+.ordersnfav{
+    position: absolute;
+    top: 360px;
+    left: 275px;
+    height: 500px;
+    width: 1300px;
+    /* border:solid rebeccapurple; */
+}
+.btn_profile{
+    position: relative;
+    top: 0px;
+    left: 0px;
+    height: 44px;
+    width: 189px;
+    color: rgba(79, 79, 79, 1);
+    border-radius: 10px 10px 0px 0px;
+    text-align: center;
+    border: transparent;
+}
+
+.btn_profile:focus{
+    background-color: rgba(26, 24, 63, 1);
+    color: rgba(255, 255, 255, 1);    
+}
+.mycakes_container{
+    position: absolute;
+    top: 0px;
+    left: -20px;
+    height: 400px;
+    width: 1280px;
+    /* border: solid green; */
+}

@@ -4,10 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Product;
+use App\Models\Cart;
+use App\Models\CartDetail;
 use Illuminate\Support\Facades\Hash;
 use \Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Http\Middleware\UserAuth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+use Session;
 
 
 
@@ -64,49 +69,7 @@ class UserController extends Controller
         {
              return redirect('signup') ->withErrors($validator) ->withInput(); 
         }
-        // $this->validate(
-        //     $req,
-        //     [
-        //         'name'                 => 'required',
-        //         'email'                => "required|email|unique:users,email",
-        //         // 'current_password'     => 'required|checkcurrentpass',
-        //         // 'new_password'         => 'required',
-        //         // 'confirm_new_password' => 'required|same:new_password',
-        //     ]
-        // );
-
-        // $validatedData = $req->validate(
-        //     [ 
-        //         'name'                 => 'required',
-        //         'email'                => "required|email|unique:users,email",
-        //     ]
-            
-        // );
         
-        // if ($validator->fails()) 
-        // { 
-        //     return redirect('signup') ->withErrors($validator) ->withInput(); 
-        // }
-
-        // $validator =Validator::make($req->all(), 
-        // [ 
-        //     'name'                 => 'required',
-        //     'email'                => "required|email|unique:users,email",
-        // ]);
-
-        // if ($validator->fails()) 
-        // {
-        //     return redirect('signup') ->withErrors($validator) ->withInput(); 
-        // }
-
-        // $req->validate([
-        //     'name'                 => 'required',
-        //     'email'                => "required|email|unique:users,email",
-        // ]);
-
-        // if ($validator->fails()) {
-        //     return self::index($req)->withErrors($validator->errors());
-        // }
 
         $user = new User;
         
@@ -115,18 +78,37 @@ class UserController extends Controller
         $user->password=Hash::make($req->password);
         $user->address = $req->address;
         $user->phoneno = $req->phoneno;
-        // $this->validate($request, 
-        // [ 
-        //     'name' => 'required|min:3|max:50',
-        //     'email' => 'email', 'vat_number' => 'max:13', 
-        //     'password' => 'required|confirmed|min:6',
-        //     'phoneno' => 'required|min:10|max:10',    
-        // ]);
-
+   
         $user->save();
 
         $usertype=$user->user_type;
         return view('banner');
 
+    }
+
+    public function profileUser(Request $req)
+    {
+        if(session()->has('user'))
+        {
+            $user=$req->session()->get('user');
+            $user_id = Session::get('user')['id'];
+            
+            $mycakes = DB::table('cart')
+                        ->join('cartdetails','cart.id','=','cartdetails.order_id')
+                        ->join('products','cartdetails.product_id','=','products.id')
+                        ->where('cart.user_id',$user_id)
+                        ->select('products.*')
+                        ->get();
+            
+            // echo "<pre>";
+            // print_r($products);
+            // die();
+            return view ('profile-user',['user'=>$user ,'products'=>$mycakes ]);
+        }
+    }
+
+    public function contactUs(Request $req)
+    {
+        return view('contactus');
     }
 }
