@@ -1,7 +1,7 @@
 .info_contact{
-    position: absolute;
+    position: fixed;
     top: 100px;
-    left: 10px;
+    left: 275px;
     height: 80px;
     width: 500px;
     font-family: 'Raleway';
@@ -9,12 +9,12 @@
     color: rgba(66, 66, 66, 1);
     letter-spacing: 0.01em;
     line-height: 34px;
-    border: solid olive;
+    /* border: solid olive; */
 }
 .contactinfo_box{
-    position: absolute;
+    position: fixed;
     top: 200px;
-    left: 10px;
+    left: 275px;
     height: 200px;
     width: 500px;
     font-family: 'Raleway';
@@ -22,18 +22,94 @@
     font-weight: 600;
     color: rgba(63, 63, 63, 1);
     letter-spacing: 0.01em;
-    border: solid pink;
+    /* border: solid pink; */
+}
+.icon_location_contact{
+    position: absolute;
+    top: 45px;
+    left: 5px;
+}
+.icon_phoneno_contact{
+  position: absolute;
+  top: 95px;
+  left: 5px;
+}
+.icon_email_contact{
+  position: absolute;
+  top: 144px;
+  left: 5px;
 }
 .data_contact{
     position: relative;
-    top: 0px;
-    left: 30px;
+    top: 10px;
+    left: 40px;
     height: 41px;
     width: 224px;
+    margin-bottom: 15px;
     font-family: 'Raleway';
     font-size: 16px;
     font-weight: 500;
     color: rgba(109, 109, 109, 1);
     letter-spacing: 0.01em;
     line-height: 22px;
+    /* border: solid blue; */
 }
+#map {
+
+    position: fixed;
+    top: 75px;
+    left: 550px;
+    height: 700px;
+    width: 650px;
+  }
+
+  .form_contact{
+    position: fixed;
+    top: 400px;
+    left: 275px;
+    height: 400px;
+    width: 461px;
+    /* border: solid firebrick; */
+  }
+  .formhead_contact{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 21px;
+    width: 201px;
+    font-family: 'Raleway';
+    font-size: 20px;
+    font-weight: 600;
+    color: rgba(63, 63, 63, 1);
+    letter-spacing: 0.01em;
+    line-height: 34px;
+  }
+  .form-contact{
+    position: absolute;
+    top: 50px;
+    left: 0px;
+  }
+
+  .form-contact .form-control{
+    position: relative;
+    top: 0px;
+    left: 0px;
+    height: 45px;
+    width: 455px;
+    border: 1px solid rgba(227, 227, 227, 1);
+    border-radius: 10px;
+  }
+  .sendmsg_btn{
+    position: absolute;
+    top: 270px;
+    left: 0px;
+    height: 50px;
+    width: 455px;
+    color: rgba(227, 227, 227, 1);
+    text-align: center;
+    font-weight: 700;
+    font-size: 20px;
+    background-color: rgba(26, 24, 63, 1);
+    border: 1px solid rgba(227, 227, 227, 1);
+    border-radius: 10px;
+  }

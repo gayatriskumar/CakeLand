@@ -37,7 +37,7 @@ Route::get('/profile',[UserController::class, 'profileUser']);
 Route::get('mycakes',[UserController::class, 'showmycakes']);
 
 Route::get('/contact',[UserController::class, 'contactUs']);
-
+Route::post('/contact', [UserController::class, 'contact']);
 
 Route::post('detail/cart',[ProductController::class, 'addToCart']);
 Route::get('cart',[ProductController::class, 'viewCart']);

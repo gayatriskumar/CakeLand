@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\CartDetail;
+use App\Models\Message;
 use Illuminate\Support\Facades\Hash;
 use \Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Http\Middleware\UserAuth;
@@ -109,6 +110,18 @@ class UserController extends Controller
 
     public function contactUs(Request $req)
     {
+        return view('contactus');
+    }
+
+    public function contact(Request $req)
+    {
+        $message = new Message;
+        
+        $message->name  =   $req->name;
+        $message->phoneno  =   $req->number;
+        $message->email =   $req->email;
+        $message->message   =   $req->msg;
+        $message->save(); 
         return view('contactus');
     }
 }
