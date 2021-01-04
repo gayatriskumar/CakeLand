@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\CartDetail;
+use App\Models\Favorite;
 use Session;
 use Illuminate\Support\Facades\DB;
 
@@ -65,8 +66,53 @@ class ProductController extends Controller
     // Function to display details of cakes (user)
     public function detail($id)
     {
-        $data = Product::find($id);
-        return view('detail', ['product'=>$data]);
+        $data     = Product::find($id);
+        $user_id  = Session::get('user')['id'];
+
+
+        $favorite = Favorite::where('user_id',$user_id)
+                            ->where('product_id',$id)
+                            ->pluck('id')
+                            ->first();
+
+        if($favorite)
+        {
+            $fav_flag = 1;
+        }
+        else 
+        {
+            $fav_flag = 0;
+        }
+
+        return view('detail', ['product'=>$data , 'fav_flag'=>$fav_flag]);
+
+    }
+
+    public function addToFavorites($id)
+    {
+        $user_id=Session::get('user')['id'];
+
+        $fav = new Favorite;
+
+        $fav -> user_id = $user_id;
+        $fav -> product_id = $id;
+        $fav->save();
+
+        return redirect()->back();
+    }
+
+    public function removeFromFavorites($id)
+    {
+        $user_id=Session::get('user')['id'];
+
+        $favId = DB::table('favorites')
+                        ->where('user_id',$user_id)
+                        ->where('product_id',$id)
+                        ->pluck('id')
+                        ->first();
+                        
+        Favorite::destroy($favId);
+        return redirect()->back();
 
     }
 
@@ -127,13 +173,16 @@ class ProductController extends Controller
                         ->where('user_id',$user_id)
                         ->update(['total_cost' => ($qty * $req->price) + $tot_cost]);
 
-                    // $tot_cost = $tot_cost + $items->price;   
-                    // $cart->delivery_cost = 0;
-                    // $cart->cart_status = 1;
-                    // $cart->total_cost=$req->price + $cart->total_cost;
-                    // $orderDate=$cart->created_at;
-                    // $cart->delivery_address=session()->get('user')['address'];
-                    // $cart->save();
+                    $qty_before =  DB::table('products')
+                                ->where('id','=',$req->product_id)
+                                ->pluck('qty_available')->first();
+                    
+                    // echo "<pre>";
+                                    // print_r($qty_before);
+                                    // die();
+                    $qty_after =    DB::table('products')
+                                    ->where('id','=',$req->product_id)
+                                    ->update(['qty_available' => $qty_before - $qty]);
 
             }
             else
@@ -156,13 +205,25 @@ class ProductController extends Controller
 
                     $cart->total_cost = $req->quantity * $req->price;
     
-                    
-                    // $cart->delivery_cost=0;
-                    // $cart->cart_status = 1;
-                    // $cart->total_cost=$req->price + $cart->delivery_cost;
-                    // $orderDate=$cart->created_at;
-                    // $cart->delivery_address=session()->get('user')['address'];
                     $cart->save();
+
+                    $qty       =  DB::table('cart')
+                                    ->join('cartdetails','cart.id','=','cartdetails.order_id')
+                                    ->join('products','cartdetails.product_id','=','products.id')
+                                    ->where('user_id',$user_id)
+                                    ->where('cart.user_id',$user_id)
+                                    ->where('cartdetails.product_id',$req->product_id)
+                                    ->pluck('cartdetails.quantity')
+                                    ->first();
+
+                    $qty_before =  DB::table('products')
+                                    ->where('id','=',$req->product_id)
+                                    ->pluck('qty_available')->first();
+
+                    $qty_after =    DB::table('products')
+                                    ->where('id','=',$req->product_id)
+                                    ->update(['qty_available' => $qty_before - $qty]);
+
             }
             return redirect ('/cart');
 
@@ -180,11 +241,12 @@ class ProductController extends Controller
     {
         if(session()->has('user'))
         {
-            $user_id=Session::get('user')['id'];
-            $cartId=DB::table('cart')
-                        ->where('cart_status','=','0')
-                        ->where('user_id',$user_id)
-                        ->pluck('id')->first();
+            $user_id    =   Session::get('user')['id'];
+            $cartId     =   DB::table('cart')
+                            ->where('cart_status','=','0')
+                            ->where('user_id',$user_id)
+                            ->pluck('id')->first();
+                            
             return Cartdetail::where('order_id',$cartId)->count();
         }
         else
@@ -203,6 +265,7 @@ class ProductController extends Controller
                     ->join('cartdetails','cart.id','=','cartdetails.order_id')
                     ->join('products','cartdetails.product_id','=','products.id')
                     ->where('cart.user_id',$user_id)
+                    ->where('cart.cart_status','=','0')
                     ->select('products.*','cartdetails.id as cart_id','cart.total_cost as total_cost')
                     ->get()
                     ->toArray();
@@ -267,12 +330,50 @@ class ProductController extends Controller
         {
             Cartdetail::destroy($cartdetailId);
         }
+
+        $qty_before =  DB::table('products')
+                            ->where('id','=',$id)
+                            ->pluck('qty_available')->first();
+
+        $qty_after =    DB::table('products')
+                            ->where('id','=',$id)
+                            ->update(['qty_available' => $qty_before + $qty]);
         
         return redirect('cart');
     }
 
+
+    //Function for checkout
+
     public function checkout(Request $req)
     {
         return view('delivery-location');
+    }
+
+    public function confirmOrder(Request $req)
+    {
+        $user_id         =  Session::get('user')['id'];
+        $cartId          =  DB::table('cart')
+                                ->where('cart_status','=','0')
+                                ->where('user_id',$user_id)
+                                ->pluck('id')->first();
+
+
+        $cart = DB::table('cart')
+                ->where('cart_status','=','0')
+                ->where('user_id',$user_id)
+                ->update([
+                    'cart_status'        =>   1,
+                    'delivery_phoneno'   =>   $req->del_phoneno,
+                    'delivery_address'   =>   $req->del_location,
+                    'delivery_date'      =>   $req->del_date
+                ]);
+
+        // echo "<pre>";
+        // print_r($qty);
+        // die();
+
+        return redirect('profile');
+
     }
 }

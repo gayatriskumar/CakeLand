@@ -32,6 +32,7 @@
     left: 0px;
     height: 50px;
     width: 50px;
+    border-radius: 142px;
 }
 .name_loggedin{
     position: absolute;

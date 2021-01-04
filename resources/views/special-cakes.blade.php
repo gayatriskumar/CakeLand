@@ -1,5 +1,9 @@
+<?php
+    use Illuminate\Http\Request;
+    use App\Models\User;
+    use App\Models\Favorite;                                            
+?>
 @extends('layout')
-
 
 @push('styles')
     <link href="{{ asset('css/styles_categories.css') }}" rel="stylesheet">
@@ -30,7 +34,7 @@
                             <div class="box_categories flex-item">
                                 <a class="atag" href="detail/{{$items->id}}">
                                     <div class="box_categories_image">
-                                        <img class="image_categories" src="{{$items->image}}">
+                                        <img class="image_categories" src="{{ asset('images/admin/cakes')}}/{{ $items->image }}">
                                     </div>
 
                                     <div class="ordernow_btn">
@@ -39,7 +43,27 @@
                                     <div class="box_categories_details">
                                         <div class="name_categories txt_forhover">{{$items->name}}</div>
                                         <div class="favorite_categories">
-                                            <img src="{{ asset('images/categories/fav.png') }}" alt="star_gold">
+                                                <?php
+                                                    $user_id = Session::get('user')['id'];
+                                                    $prod_id = $items->id;
+                                                    $favorite = Favorite::where('user_id',$user_id)
+                                                                        ->where('product_id',$prod_id)
+                                                                        ->pluck('id')
+                                                                        ->first();
+
+                                                    if($favorite)
+                                                    {
+                                                        $fav_flag = 1;
+                                                    }
+                                                    else 
+                                                    {
+                                                        $fav_flag = 0;
+                                                    }
+                                                ?>
+                                
+                                                @if($fav_flag == 1)
+                                                    <img src="{{ asset('images/categories/fav.png') }}" alt="star_gold">
+                                                @endif       
                                         </div>
                                         <div class="box_categories_rating">
                                             @for ($i = 0; $i < $items->rating; $i++)

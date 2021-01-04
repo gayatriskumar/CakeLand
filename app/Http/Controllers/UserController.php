@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Cart;
 use App\Models\CartDetail;
 use App\Models\Message;
+use App\Models\Favorite;
 use Illuminate\Support\Facades\Hash;
 use \Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Http\Middleware\UserAuth;
@@ -28,9 +29,24 @@ class UserController extends Controller
             return view('layout-login');
         }
         else
-        {
-            $req->session()->put('user',$user);
-            return view('layout-loggedin',['user'=>$user]);
+        {   
+            $usertype = User::where(['email'=>$req->email])
+                            ->pluck('usertype')
+                            ->first();
+            
+            // Check if the user is admin
+            if($usertype == 1)
+            {
+                $req->session()->put('user',$user);
+                return view('banner-admin',['user'=>$user]);
+            }
+            else
+            {
+                $req->session()->put('user',$user);
+                // $user_id = Session::get('user')['id'];
+                // $user = User::where(['id'=>$user_id])->first();
+                return view('layout-loggedin',['user'=>$user]);
+            }
         } 
     }
 
@@ -47,7 +63,9 @@ class UserController extends Controller
     {
         if(session()->has('user'))
         {
-            $user=$req->session()->get('user');
+            // $user=$req->session()->get('user');
+            $user_id = Session::get('user')['id'];
+            $user = User::where(['id'=>$user_id])->first();
             return view ('banner',['user'=>$user]);
         }
         else
@@ -83,7 +101,7 @@ class UserController extends Controller
         $user->save();
 
         $usertype=$user->user_type;
-        return view('banner');
+        return redirect('/');
 
     }
 
@@ -91,21 +109,52 @@ class UserController extends Controller
     {
         if(session()->has('user'))
         {
-            $user=$req->session()->get('user');
+           
             $user_id = Session::get('user')['id'];
+            $user = User::where(['id'=>$user_id])->first();
             
             $mycakes = DB::table('cart')
                         ->join('cartdetails','cart.id','=','cartdetails.order_id')
                         ->join('products','cartdetails.product_id','=','products.id')
                         ->where('cart.user_id',$user_id)
+                        ->where('cart.cart_status','=','1')
                         ->select('products.*')
                         ->get();
+
+            $myfav   = DB::table('favorites')
+                        ->join('products','favorites.product_id','=','products.id')
+                        ->where('favorites.user_id',$user_id)
+                        ->select('products.*')
+                        ->get();
+        
             
-            // echo "<pre>";
-            // print_r($products);
-            // die();
-            return view ('profile-user',['user'=>$user ,'products'=>$mycakes ]);
+            return view ('profile-user',['user'=>$user ,'products'=>$mycakes , 'favorites'=>$myfav ]);
         }
+    }
+
+    public function EditProfileUser(Request $req)
+    {
+        $user=$req->session()->get('user');
+
+        return view('profile-edit-user',['user'=>$user]);
+    }
+
+    public function SaveProfileUser(Request $req)
+    {
+        $user_id  =  Session::get('user')['id'];
+
+        $image = $req->file('file');
+        $imageName = time().'.'.$image->extension();
+        $image->move(public_path('images/dp'),$imageName);
+
+        User::where('id',$user_id)
+                ->update([
+                    'address'       =>   $req->location_user_edit,
+                    'profile_photo' =>   $imageName,
+                    'phoneno'       =>   $req->phoneno_user_edit
+                ]);
+        
+        return redirect('profile');
     }
 
     public function contactUs(Request $req)
@@ -117,10 +166,10 @@ class UserController extends Controller
     {
         $message = new Message;
         
-        $message->name  =   $req->name;
-        $message->phoneno  =   $req->number;
-        $message->email =   $req->email;
-        $message->message   =   $req->msg;
+        $message->name       =   $req->name;
+        $message->phoneno    =   $req->number;
+        $message->email      =   $req->email;
+        $message->message    =   $req->msg;
         $message->save(); 
         return view('contactus');
     }

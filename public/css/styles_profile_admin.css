@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+.name_box{
+    position: fixed;
+    top: 120px;
+    left: 280px;
+    height: 100px;
+    width: 500px;
+    background-color: #EDEDED;   
+}
+.dp_admin{
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    height: 70px;
+    width: 70px;
+    border-radius: 70px;
+    border: solid white;
+}
+.name_admin{
+    position: absolute;
+    top: 35px;
+    left: 100px;
+    height: 40px;
+    width: 300px;
+    /* border: solid forestgreen; */
+    font-family: 'Raleway';
+    font-size: 21px;
+    font-weight: 600;
+    color: black;
+    letter-spacing: 0.01em;
+}
+.edit_button{
+    position: absolute;
+    top: 35px;
+    left: 450px;
+    height: 35px;
+    width: 35px;
+    background-color: white;
+    border-radius: 35px;
+}
+.edit_icon{
+    position: absolute;
+    top: 7px;
+    left: 7px; 
+    height: 20px;
+    width: 20px;
+}
+
+.contactinfo_box{
+    position: fixed;
+    top: 250px;
+    left: 280px;
+    height: 200px;
+    width: 500px;
+    font-family: 'Raleway';
+    font-size: 22px;
+    font-weight: 600;
+    color: rgba(63, 63, 63, 1);
+    letter-spacing: 0.01em;
+    /* border: solid pink; */
+}
+
+.icon_phoneno_contact{
+    position: absolute;
+    top: 40px;
+    left: 5px;
+}
+.icon_email_contact{
+  position: absolute;
+  top: 90px;
+  left: 5px;
+}
+.icon_location_contact {
+  position: absolute;
+  top: 145px;
+  left: 5px;
+}
+.data_contact{
+    position: relative;
+    top: 10px;
+    left: 40px;
+    height: 41px;
+    width: 300px;
+    font-family: 'Raleway';
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(109, 109, 109, 1);
+    letter-spacing: 0.01em;
+    /* line-height: 22px; */
+    /* border: solid blue; */
+}
+.phoneno_admin{
+    font-family: 'Lato';
+    /* font-weight: 600; */
+}
+#map {
+    position: fixed;
+    top: 120px;
+    left: 550px;
+    height: 650px;
+    width: 650px;
+  }
+
+  

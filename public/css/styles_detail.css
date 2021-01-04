@@ -6,12 +6,13 @@
     left: -40px;
     height: 1080px;
     width: 1920px;
+    /* border: solid aquamarine; */
 }
 
 .head_detail{
     position: absolute;
-    top: 81px;
-    left: 359px;
+    top: 60px;
+    left: 320px;
     height: 32px;
     width: 179px;
     font-family: 'Raleway';
@@ -25,37 +26,68 @@
 .image_detail{
     position: absolute;
     top: 180px;
-    left: 359px;
+    left: 320px;
     height: 430px;
     width: 700px;
 }
 .name_detail{
     position: absolute;
-    top: 142px;
-    left: 1118px;
-    height: 23px;
-    width: 400px;
+    top: 155px;
+    left: 1050px;
+    height: 40px;
+    width: 600px;
     font-family: 'Raleway';
     font-size: 28px;
     font-weight: 600;
     color: rgba(3, 3, 3, 1);
     letter-spacing: 0.01em;
-    line-height: 78px;
+    /* border: solid darkgreen; */
+}
+.location{
+    position: absolute;
+    top: 170px;
+    left: 1500px;
+    height: 42px;
+    width: 43px;
+}
+.share{
+    position: absolute;
+    top: 170px;
+    left: 1550px;
+    height: 42px;
+    width: 43px;
+}
+.favorite_before{
+    position: absolute;
+    top: 170px;
+    left: 1600px;
+    height: 42px;
+    width: 43px;
+}
+.favorite_after{
+    position: absolute;
+    top: 175px;
+    left: 1610px;
+    height: 27px;
+    width: 28px;
 }
 .star{
     position: relative;
     top: 230px;
-    left: 1119px;
+    left: 1050px;
     height: 18px;
     width: 19px;
     display: inline;
+    /* border: solid darkgoldenrod; */
 }
 .wrapper_details{
     position: absolute;
-    top: 237px;
-    left: 1120px;
-    height: 457px;
-    width: 638px;
+    top: 230px;
+    left: 1050px;
+    height: 400px;
+    width: 520px;
+    padding-left: 30px;
+    /* border: solid slateblue; */
 }
 
 .description_detail{
@@ -136,11 +168,12 @@
 }
 .order_details{
     position: absolute;
-    top: 630px;
-    left:360px;
-    height: 100px;
+    top: 620px;
+    left:320px;
+    height: 230px;
     width: 1300px;
     line-height: 20px;
+    /* border: solid firebrick; */
 }
 .preference_head{
     color: black;
@@ -166,7 +199,14 @@
 }
 
 .order_details .place_order_btn{
+    color:rgb(211, 209, 218);
     background-color: rgba(26, 24, 63, 1) !important;
+    height: 50px;
+    width: 200px;
+    text-align: center;
+    font-weight: 700;
+    border-radius: 10px;
+
 }
 
 /* @media (max-width: 830px) {

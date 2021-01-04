@@ -1,0 +1,136 @@
+.head_categories{
+    top:60px;
+}
+
+.create_item_wrapper{
+    position: fixed;
+    top: 130px;
+    left: 280px;
+    height: 560px;
+    width: 1300px;
+    /* border: solid forestgreen;     */
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+  
+  
+  .form_add_product{
+      position:absolute;
+      height: 550px;
+      width: 520px;
+      top: 0px;
+      left: 600px;
+      /* border: solid darkblue; */
+      padding-left: 20px;
+  }
+  .img_upload{
+    position: absolute;
+    top: 0px;
+    left: -600px;
+    height: 400px;
+    width: 600px;
+    background-color: rgba(242, 242, 242, 1);
+    border: 1px solid rgba(230, 230, 230, 1);
+  }
+
+  .add-product-input{
+    position: relative;;
+    top: 0px;
+    left: 0px;
+    height: 45px;
+    width: 400px;
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(227, 227, 227, 1);
+    border-radius: 10px 10px 10px 10px;
+  }
+
+  .label_create_item{
+    font-family: 'Raleway';
+    font-size: 18px;
+    font-weight: 500;
+    color: #d0d0d0;
+    letter-spacing: 0.01em;
+  }
+
+  .additive_input{
+    position: absolute;
+    top: 400px;
+    left: -600px;
+    height: 154px;
+    width: 600px;
+    /* border: solid indianred; */
+  }
+  .additive_input .add-product-input{
+      height: 100px;
+      width: 600px;
+  }
+
+  .submit-create-item{
+      position: absolute;
+      top: -60px;
+      left: 550px;
+      height: 51px;
+      width: 138px;
+      color: white;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: 900;
+      font-size: 18px !important;
+      background-color: rgba(26, 24, 63, 1);
+  }
+  
+  .upload_pic{
+    position: absolute;
+    top: 150px;
+    left: 250px;
+    height: 69px;
+    width: 69px;
+  }
+  .cake_preview{
+    position: absolute;
+    top: 0px;
+    height: 395px;
+    width: 600px;
+    /* max-height: 300px;
+    max-width: 500px; */
+    /* border: solid darkblue; */
+    z-index: 1;
+  }
+  .label_upload_photo{
+    position:absolute;
+    top:175px;
+    left:250px;
+    color:transparent;
+    padding: 0.5rem;
+    font-family: 'Raleway';
+    border-radius: 0.3rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    font-size: 20px;
+    z-index: 2;
+  }
+  .choose_photo{
+    visibility: hidden;
+  }
+  .image_before{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 400px;
+  width: 600px;
+  }
+
+.dp_preview{
+    top:0px;
+    max-height: 130px;
+    max-width:130px; 
+    left: 20px;
+    margin-bottom: 5px;
+    /* border: solid darksalmon; */
+}
+.dp_profile{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  /* border: solid hotpink; */
+}

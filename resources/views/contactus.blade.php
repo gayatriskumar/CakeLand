@@ -78,7 +78,7 @@
                             </div>
                         
                             <div class="form-group">   
-                                <textarea class="form-control" name='msg' rows="5" cols="50" id="inlineFormControlInput4" placeholder = "Message"></textarea>
+                                <textarea class="form-control" name='msg' rows="5" cols="50" id="inlineFormControlInput4" style="height: 85px" placeholder = "Message"></textarea>
                             </div>
 
                             <br>

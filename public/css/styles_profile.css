@@ -30,7 +30,7 @@
     left: 0px;
     height: 142px;
     width: 142px;
-    background-color: rgba(243, 28, 94, 1);
+    /* background-color: rgba(243, 28, 94, 1); */
     border: 5px solid rgba(224, 224, 224, 1);
     border-radius: 142px;
 }
@@ -127,9 +127,21 @@
     position: absolute;
     top: 360px;
     left: 275px;
-    height: 500px;
+    height: 450px;
     width: 1300px;
     /* border:solid rebeccapurple; */
+
+}
+.flex-container {
+    
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    overflow-y: scroll;
+    
 }
 .btn_profile{
     position: relative;
@@ -150,8 +162,8 @@
 .mycakes_container{
     position: absolute;
     top: 0px;
-    left: -20px;
+    left: 0px;
     height: 400px;
-    width: 1280px;
+    width: 1300px;
     /* border: solid green; */
 }

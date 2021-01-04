@@ -36,6 +36,15 @@
     letter-spacing: 0.01em;
     /* border: solid green; */
 }
+#map {
+    position: fixed;
+    top: 130px;
+    left: 0px;
+    height: 400px;
+    width: 1300px;
+  }
+
+
 .location{
     width:200px;
 }

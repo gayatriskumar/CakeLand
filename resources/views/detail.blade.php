@@ -7,7 +7,6 @@
 
 @push('scripts')
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-    <!-- <script href="{{ asset('js/categories.js') }}"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 @endpush
 
@@ -17,10 +16,18 @@
         <div class="box_detail">
             <h1 class="head_detail">Details</h1>
             <div class="imagebox_detail">
-                <img class="image_detail" src="{{$product['image']}}">
+                <img class="image_detail" src="{{ asset('images/admin/cakes')}}/{{ $product['image'] }}">
             </div>
             <h2 class="name_detail">{{$product['name']}}</h2>
-            <div class="rating_detail">
+            <img class="location" src="{{ asset('images/categories/location.png') }}" alt="location">
+            <img class="share" src="{{ asset('images/categories/share.png') }}" alt="share">
+            @if($fav_flag == 0)
+                <a href="/add_favorite/{{$product['id']}}"><img class="favorite_before" src="{{ asset('images/categories/Favorite_before.png') }}" alt="favorite_before"></a>
+            @else
+                <a href="/remove_favorite/{{$product['id']}}"><img class="favorite_after" src="{{ asset('images/categories/fav.png') }}" alt="favorite_after"></a> 
+            @endif
+
+           <div class="rating_detail">
                 @for ($i = 0; $i < $product['rating']; $i++)
                     <div class="star">
                         <img src="{{ asset('images/categories/star_gold.png') }}" alt="star_gold">
@@ -51,7 +58,7 @@
                     <h5 class="taxinclusive_msg">(Inclusive of all taxes)</h5>
                 </div>
             </div>
-            <!-- Order details -->
+           
             <div class="order_details">
                     <h3 class="preference_head">Order Preference</h3>
                     <div class="container-fluid">
@@ -104,3 +111,5 @@
         </div>
     @endsection
 </body>
+
+

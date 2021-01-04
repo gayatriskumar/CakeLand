@@ -41,7 +41,7 @@ $total=ProductController::cartItem();
 
             <div class="container">
                 <div class="sidebar_contents">
-                    <li><a class="sidebar_link home" href="home">Home</a></li>
+                    <li><a class="sidebar_link home" href="/">Home</a></li>
                     <li><a class="sidebar_link popular_cakes" href="popular-cakes">Popular Cakes</a></li>
                     <li><a class="sidebar_link birthday_cakes" href="birthday-cakes">Birthday Cakes</a></li>
                     <li><a class="sidebar_link anniversary_cakes" href="anniversary-cakes">Anniversary Cakes</a></li>
@@ -71,11 +71,12 @@ $total=ProductController::cartItem();
             
             if(session()->has('user'))
             {
-            $user=session()->get('user');
+            $user_id = Session::get('user')['id'];
+            $user = User::where(['id'=>$user_id])->first();
             ?>
                 <div class="box">
                     <div class="dp">
-                        <img class="image_dp" src="{{ asset('images/loggedin/dp.svg') }}">
+                        <img class="image_dp" src="{{ asset('images/dp')}}/{{ $user['profile_photo'] }}">
                     </div>
                     <h2 class="name_loggedin">{{$user['name']}}</h2>
                     <h2 class="email_loggedin">{{$user['email']}}</h2>

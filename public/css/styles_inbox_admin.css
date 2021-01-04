@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,300&display=swap');
+
+.inbox_wrapper{
+    position: fixed;
+    top: 130px;
+    left: 280px;
+    height: 680px;
+    width: 1300px;
+    /* border: solid slategray; */
+   
+}
+
+.order_box{
+    position: relative;
+    top: 0px;
+    left: 0px;
+    height: 150px;
+    width:600px;
+    margin: 10px;
+    border: 1px solid rgba(227, 227, 227, 1);
+}
+.flex-container {
+    
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    overflow-y: scroll;
+}
+
+.image_box .dp_order{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    height: 120px;
+    width:120px;
+    margin: 5px;
+    border-radius: 120px;
+    /* border: solid goldenrod; */
+}
+.details_box{
+    position: absolute;
+    top: 0px;
+    left: 150px;
+    height: 130px;
+    width:430px;
+    margin: 5px;
+    /* border: solid hotpink; */
+}
+.name_order{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 30px;
+    width:300px;
+    margin: 5px;
+    /* border: solid yellowgreen; */
+    text-decoration: none;
+    font-family: 'Raleway';
+    font-size: 23px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1);
+    letter-spacing: 0.01em;
+}
+.place_order{
+    position: absolute;
+    top: 30px;
+    left: 0px;
+    height: 30px;
+    width:300px;
+    margin: 5px;
+    /* border: solid yellowgreen; */
+    text-decoration: none;
+    font-family: 'Raleway';
+    font-size: 20px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 1);
+    letter-spacing: 0.01em;
+}
+.noofitems_order{
+    position: absolute;
+    top: 80px;
+    left: 0px;
+    height: 30px;
+    width:200px;
+    margin: 5px;
+    /* border: solid yellowgreen; */
+    text-decoration: none;
+    font-family: 'Raleway';
+    font-size: 21px;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 1);
+    letter-spacing: 0.01em;
+}
+.time_order{
+    position: absolute;
+    top: 0px;
+    left: 300px;
+    height: 30px;
+    width:120px;
+    margin: 5px;
+    /* border: solid khaki; */
+    text-decoration: none;
+    font-family: 'Lato';
+    font-size: 21px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 1);
+    letter-spacing: 0.01em;
+}
+.status_order{
+    position: absolute;
+    top: 80px;
+    
+    height: 40px;
+    margin: 5px;
+    text-decoration: none;
+    font-family: 'Raleway';
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.01em;
+    text-align: center;
+    border-radius: 20px;
+    border: none;
+}
+.new_order{
+    width:150px;
+    left: 270px;
+    background-color: #F24171;
+}
+.processing_order{
+    width: 220px;
+    left: 200px;
+    padding-left: 30px;
+    background-color: #F2884B;
+}
+.out_for_delivery{
+    width: 220px;
+    left: 200px;
+    padding-left: 30px;
+    background-color:#44AFB5;
+}
+.delivery_sucessful{
+    width: 220px;
+    left: 200px;
+    padding-left: 30px;
+    background-color:#2EBA76;
+}
+.btn_icon_inbox{
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    left: 25px;
+    top: 5px;
+}

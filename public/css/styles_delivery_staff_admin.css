@@ -1,0 +1,114 @@
+.delivery_staff_wrapper{
+    position: fixed;
+    top: 130px;
+    left: 280px;
+    height: 680px;
+    width: 1300px;
+    /* border: solid slategray; */
+}
+.staff_box{
+    position: relative;
+    top: 0px;
+    left: 0px;
+    height: 150px;
+    width:600px;
+    margin: 10px;
+    border: 1px solid rgba(227, 227, 227, 1);
+}
+.flex-container {
+    
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    overflow-y: scroll;
+}
+.image_box .dp_order{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    height: 120px;
+    width:120px;
+    margin: 5px;
+    border-radius: 120px;
+    /* border: solid goldenrod; */
+}
+.details_box{
+    position: absolute;
+    top: 10px;
+    left: 150px;
+    height: 130px;
+    width:430px;
+    margin: 5px;
+    /* border: solid hotpink; */
+}
+.name_staff{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 30px;
+    width:300px;
+    margin: 5px;
+    /* border: solid yellowgreen; */
+    text-decoration: none;
+    font-family: 'Raleway';
+    font-size: 23px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1);
+    letter-spacing: 0.01em;
+}
+.available_staff, .busy_staff{
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    height: 30px;
+    width:300px;
+    margin: 5px;
+    /* border: solid yellowgreen; */
+    text-decoration: none;
+    font-family: 'Raleway';
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 1);
+    letter-spacing: 0.01em;
+}
+.assign_staff_btn{
+    position: absolute;
+    top: 25px;
+    left: 270px;
+    height: 40px;
+    width:150px;
+    margin: 5px;
+    color:white;
+    background-color: rgba(26, 24, 63, 1);
+    text-decoration: none;
+    font-family: 'Raleway';
+    font-size: 20px !important;
+    font-weight: 900;
+    letter-spacing: 0.01em;
+    text-align: center;
+    border-radius: 20px;
+    border: none;
+}
+.busy_btn{
+    position: absolute;
+    top: 35px;
+    left: 5px;
+    height: 15px;
+    width:15px;
+    margin: 5px;
+    border-radius: 15px;
+    background-color: #F27329;
+}
+.available_btn{
+    position: absolute;
+    top: 35px;
+    left: 5px;
+    height: 15px;
+    width:15px;
+    margin: 5px;
+    border-radius: 15px;
+    background-color: #34BF70;
+}

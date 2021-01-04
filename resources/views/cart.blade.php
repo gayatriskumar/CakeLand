@@ -46,7 +46,7 @@ $delivery_cost=0;
                         <div class="box_categories">
                             <a class="atag" href="detail/{{$items->id}}">
                                 <div class="box_categories_image">
-                                    <img class="image_categories" src="{{$items->image}}">
+                                    <img class="image_categories" src="{{ asset('images/admin/cakes')}}/{{ $items->image }}">
                                 </div>
 
                                 <div class="ordernow_btn">
