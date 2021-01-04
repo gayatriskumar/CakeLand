@@ -20,10 +20,10 @@
     <div class="categories_wrapper">
         <!-- heading -->
         <h1 class="head_categories">Anniversary cakes</h1>
-        <div class="form-group has-search categories_search">
-            <span class="fa fa-search form-control-feedback categories_searchicon"></span>
-            <input type="text" class="form-control" placeholder="Search by name">
-        </div>
+        <form action="/search" class="form-group has-search categories_search">
+                <span class="fa fa-search form-control-feedback categories_searchicon"></span>
+                <input type="text" name="query" class="form-control" placeholder="Search by name">
+        </form>
 
         <!-- cake box -->
         <div class='some-page-wrapper'>
@@ -44,26 +44,30 @@
                                             <div class="name_categories txt_forhover">{{$items->name}}</div>
                                             <div class="favorite_categories">
                                                 <?php
-                                                    $user_id = Session::get('user')['id'];
-                                                    $prod_id = $items->id;
-                                                    $favorite = Favorite::where('user_id',$user_id)
-                                                                        ->where('product_id',$prod_id)
-                                                                        ->pluck('id')
-                                                                        ->first();
+                                                    if(session()->has('user'))
+                                                    {
+                                                        $user_id = Session::get('user')['id'];
+                                                        $prod_id = $items->id;
+                                                        $favorite = Favorite::where('user_id',$user_id)
+                                                                            ->where('product_id',$prod_id)
+                                                                            ->pluck('id')
+                                                                            ->first();
 
-                                                    if($favorite)
-                                                    {
-                                                        $fav_flag = 1;
-                                                    }
-                                                    else 
-                                                    {
-                                                        $fav_flag = 0;
-                                                    }
+                                                        if($favorite)
+                                                        {
+                                                            $fav_flag = 1;
+                                                        }
+                                                        else 
+                                                        {
+                                                            $fav_flag = 0;
+                                                        }
                                                 ?>
-                                
-                                                @if($fav_flag == 1)
-                                                    <img src="{{ asset('images/categories/fav.png') }}" alt="star_gold">
-                                                @endif        
+                                                        @if($fav_flag == 1)
+                                                            <img src="{{ asset('images/categories/fav.png') }}" alt="star_gold">
+                                                        @endif  
+                                                <?php
+                                                    }
+                                                ?>       
                                             </div>
                                             <div class="box_categories_rating">
                                                 @for ($i = 0; $i < $items->rating; $i++)

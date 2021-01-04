@@ -60,7 +60,7 @@ $delivery_cost=0;
                                 <div class="box_categories_details">
                                     <div class="name_categories txt_forhover">{{$items->name}}</div>
                                     <div class="favorite_categories">
-                                        <img src="{{ asset('images/categories/fav.png') }}" alt="star_gold">
+                                        <!-- <img src="{{ asset('images/categories/fav.png') }}" alt="star_gold"> -->
                                     </div>
                                     <div class="box_categories_rating">
                                         @for ($i = 0; $i < $items->rating; $i++)

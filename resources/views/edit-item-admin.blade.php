@@ -36,13 +36,13 @@
                 @csrf
                 <div class="img_upload">
                     <img src="{{ asset('images/admin/cakes')}}/{{ $product['image'] }}" alt="item_image" class="image_before">
-                    <div class="dp_profile">
-                    <div class="form-group">
+                    <!-- <div class="dp_profile">
+                        <div class="form-group">
                             <label for="file">Item Image</label>
                             <input type="file" name='file' class="choose_dp" onchange="previewFile(this)"/>
                             <img id='previewImg' class="dp_preview"/>
                         </div>
-                </div>
+                    </div> -->
                 </div>
 
 

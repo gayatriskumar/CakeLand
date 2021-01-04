@@ -68,7 +68,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <div class="Admin_box">
                         <div class="box_head">Would you like to sell cakes</div>
                         <label class="switch">
@@ -76,7 +76,7 @@
                             <span class="slider round"></span>
                         </label>
                     </div>
-                </div>
+                </div> -->
 
                 <button type="submit" class="saveprofile_btn">Save</button>
 

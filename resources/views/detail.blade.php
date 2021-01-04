@@ -21,11 +21,18 @@
             <h2 class="name_detail">{{$product['name']}}</h2>
             <img class="location" src="{{ asset('images/categories/location.png') }}" alt="location">
             <img class="share" src="{{ asset('images/categories/share.png') }}" alt="share">
-            @if($fav_flag == 0)
-                <a href="/add_favorite/{{$product['id']}}"><img class="favorite_before" src="{{ asset('images/categories/Favorite_before.png') }}" alt="favorite_before"></a>
-            @else
-                <a href="/remove_favorite/{{$product['id']}}"><img class="favorite_after" src="{{ asset('images/categories/fav.png') }}" alt="favorite_after"></a> 
-            @endif
+            <?php
+                if(session()->has('user'))
+                {                            
+            ?>
+                @if($fav_flag == 0)
+                    <a href="/add_favorite/{{$product['id']}}"><img class="favorite_before" src="{{ asset('images/categories/Favorite_before.png') }}" alt="favorite_before"></a>
+                @else
+                    <a href="/remove_favorite/{{$product['id']}}"><img class="favorite_after" src="{{ asset('images/categories/fav.png') }}" alt="favorite_after"></a> 
+                @endif
+            <?php
+                }                                     
+            ?>
 
            <div class="rating_detail">
                 @for ($i = 0; $i < $product['rating']; $i++)
@@ -58,8 +65,12 @@
                     <h5 class="taxinclusive_msg">(Inclusive of all taxes)</h5>
                 </div>
             </div>
-           
-            <div class="order_details">
+
+            <?php
+                if(session()->has('user'))
+                {                            
+            ?>
+               <div class="order_details">
                     <h3 class="preference_head">Order Preference</h3>
                     <div class="container-fluid">
                         <form class="form-inline" action="cart" method="POST">
@@ -108,6 +119,17 @@
                         </form>
                     </div>
                 </div>
+            <?php
+                }
+                else
+                {
+            ?>
+                <h3 class="msgbeforeLogin">Please Login or signup to Place an Order</h3>
+            <?php       
+                }                                    
+            ?>
+           
+            
         </div>
     @endsection
 </body>

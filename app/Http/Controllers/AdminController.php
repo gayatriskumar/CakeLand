@@ -497,10 +497,6 @@ class AdminController extends Controller
                         ->pluck('profile_photo')
                         ->first();
         
-        // echo "<pre>";
-        // print_r($req->file('file'));
-        // die();
-
         if($req->file('file'))
         {
             $image = $req->file('file');

@@ -19,7 +19,11 @@
 
         <div class="img_box">
             <div class="dp_profile">
-                <img class="user_dp" src="{{ asset('images/dp')}}/{{ $user->profile_photo }}">
+                @if($user->profile_photo)
+                    <img class="user_dp" src="{{ asset('images/dp')}}/{{ $user->profile_photo }}">
+                @else    
+                    <img class="user_dp" src="{{ asset('images/loggedin/dp.svg')}}" alt="">
+                @endif
             </div>
             <div class="user_name">{{$user->name}}</div>
         </div>
@@ -117,7 +121,7 @@
                                                         <img class="image_categories" src="{{ asset('images/admin/cakes')}}/{{ $items->image }}">
                                                     </div>
                                                     <div class="ordernow_btn">
-                                                        <button class="ordernow_txt">Rate your cake</button>
+                                                        <button class="ordernow_txt">Order Now</button>
                                                     </div>
                                                     <div class="box_categories_details">
                                                         <div class="name_categories txt_forhover">{{$items->name}}</div>

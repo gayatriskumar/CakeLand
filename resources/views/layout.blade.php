@@ -76,7 +76,11 @@ $total=ProductController::cartItem();
             ?>
                 <div class="box">
                     <div class="dp">
-                        <img class="image_dp" src="{{ asset('images/dp')}}/{{ $user['profile_photo'] }}">
+                        @if($user['profile_photo'])
+                            <img class="image_dp" src="{{ asset('images/dp')}}/{{ $user['profile_photo'] }}">
+                        @else    
+                            <img class="image_dp" src="{{ asset('images/loggedin/dp.svg')}}" alt="">
+                        @endif
                     </div>
                     <h2 class="name_loggedin">{{$user['name']}}</h2>
                     <h2 class="email_loggedin">{{$user['email']}}</h2>

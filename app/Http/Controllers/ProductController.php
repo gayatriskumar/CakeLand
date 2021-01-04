@@ -67,21 +67,26 @@ class ProductController extends Controller
     public function detail($id)
     {
         $data     = Product::find($id);
-        $user_id  = Session::get('user')['id'];
-
-
-        $favorite = Favorite::where('user_id',$user_id)
-                            ->where('product_id',$id)
-                            ->pluck('id')
-                            ->first();
-
-        if($favorite)
+        if(session()->has('user'))
         {
-            $fav_flag = 1;
+            $user_id  = Session::get('user')['id'];
+            
+            $favorite = Favorite::where('user_id',$user_id)
+                                ->where('product_id',$id)
+                                ->pluck('id')
+                                ->first();
+            
+            if($favorite)
+            {
+                $fav_flag = 1;
+            }
+            else 
+            {
+                $fav_flag = 0;
+            }
         }
-        else 
-        {
-            $fav_flag = 0;
+        else{
+            $fav_flag = 2;
         }
 
         return view('detail', ['product'=>$data , 'fav_flag'=>$fav_flag]);

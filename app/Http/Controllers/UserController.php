@@ -25,8 +25,8 @@ class UserController extends Controller
         $user = User::where(['email'=>$req->email])->first();
         if(!$user || !Hash::check($req->password,$user->password))
         {
-            echo '<script>alert("Username or Password is incorrect")</script>';
-            return view('layout-login');
+            echo "<script>alert('Username or Password is incorrect');</script>";
+            return redirect('/');
         }
         else
         {   
@@ -45,7 +45,8 @@ class UserController extends Controller
                 $req->session()->put('user',$user);
                 // $user_id = Session::get('user')['id'];
                 // $user = User::where(['id'=>$user_id])->first();
-                return view('layout-loggedin',['user'=>$user]);
+                // return view('layout-loggedin',['user'=>$user]);
+                return view ('banner',['user'=>$user]);
             }
         } 
     }
@@ -134,7 +135,8 @@ class UserController extends Controller
 
     public function EditProfileUser(Request $req)
     {
-        $user=$req->session()->get('user');
+        $user_id = Session::get('user')['id'];
+        $user = User::where(['id'=>$user_id])->first();
 
         return view('profile-edit-user',['user'=>$user]);
     }
@@ -143,18 +145,32 @@ class UserController extends Controller
     {
         $user_id  =  Session::get('user')['id'];
 
-        $image = $req->file('file');
-        $imageName = time().'.'.$image->extension();
-        $image->move(public_path('images/dp'),$imageName);
+        $user_dp = User::where('id','=',$user_id)
+                        ->pluck('profile_photo')
+                        ->first();
+        
+        if($req->file('file'))
+        {
+            $image = $req->file('file');
+            $imageName = time().'.'.$image->extension();
+            $image->move(public_path('images/dp'),$imageName);
 
-        User::where('id',$user_id)
+            User::where('id',$user_id)
+                    ->update([
+                        'address'       =>   $req->location_user_edit,
+                        'profile_photo' =>   $imageName,
+                        'phoneno'       =>   $req->phoneno_user_edit
+                    ]);
+        }
+        else
+        {
+            User::where('id',$user_id)
                 ->update([
                     'address'       =>   $req->location_user_edit,
-                    'profile_photo' =>   $imageName,
                     'phoneno'       =>   $req->phoneno_user_edit
                 ]);
-        
-        return redirect('profile');
+        }
+        return redirect('/profile');
     }
 
     public function contactUs(Request $req)
