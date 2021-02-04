@@ -44,7 +44,7 @@
                     <div class="dp_profile">
                         <div class="form-group">
                             <label for="file">Choose Profile Image</label>
-                            <input type="file" name='file' id="file" class="choose_dp inputfile" onchange="previewFile(this)"/>
+                            <input type="file" name='file' id="file" class="choose_dp inputfile" accept="image/*" onchange="previewFile(this)"/>
                             <img id='previewImg' class="dp_preview"/> 
                         </div>
                     </div>
